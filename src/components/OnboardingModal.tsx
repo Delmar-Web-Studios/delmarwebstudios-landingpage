@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ArrowRight, ArrowLeft, Zap, Users, ShoppingCart, Calendar, Send } from "lucide-react";
+import { X, ArrowRight, ArrowLeft, Zap, Users, ShoppingCart, Send } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 interface OnboardingModalProps {
   open: boolean;
@@ -13,10 +15,11 @@ const goals = [
   { label: "Scale E-commerce", icon: ShoppingCart },
 ];
 
-const budgets = ["$500 – $1,500", "$1,500 – $5,000", "$5,000 – $15,000", "$15,000+"];
+const budgets = ["150 000 – 500 000 FCFA", "500 000 – 1 500 000 FCFA", "1 500 000 – 5 000 000 FCFA", "5 000 000+ FCFA"];
 
 export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
   const [step, setStep] = useState(1);
+  const [submitting, setSubmitting] = useState(false);
   const [data, setData] = useState({
     goal: "",
     name: "",
@@ -31,16 +34,37 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
   });
 
   const totalSteps = 5;
-
   const next = () => setStep((s) => Math.min(s + 1, totalSteps));
   const prev = () => setStep((s) => Math.max(s - 1, 1));
 
-  const handleSubmit = () => {
-    const msg = `Hi! I'm ${data.name} from ${data.business} (${data.industry}). Goal: ${data.goal}. Budget: ${data.budget}. Website: ${data.website || "N/A"}. Meet: ${data.meetDate} ${data.meetTime}. Email: ${data.email}`;
-    const encoded = encodeURIComponent(msg);
-    window.open(`https://wa.me/${data.whatsapp.replace(/\D/g, "")}?text=${encoded}`, "_blank");
-    onClose();
-    setStep(1);
+  const handleSubmit = async () => {
+    setSubmitting(true);
+    try {
+      const { error } = await supabase.from("bookings").insert({
+        goal: data.goal,
+        name: data.name,
+        business_name: data.business,
+        industry: data.industry,
+        website_url: data.website || null,
+        budget: data.budget,
+        meet_date: data.meetDate || null,
+        meet_time: data.meetTime || null,
+        whatsapp: data.whatsapp,
+        email: data.email,
+      });
+      if (error) throw error;
+
+      const msg = `Hi! I'm ${data.name} from ${data.business} (${data.industry}). Goal: ${data.goal}. Budget: ${data.budget}. Website: ${data.website || "N/A"}. Meet: ${data.meetDate} ${data.meetTime}. Email: ${data.email}`;
+      const encoded = encodeURIComponent(msg);
+      window.open(`https://wa.me/${data.whatsapp.replace(/\D/g, "")}?text=${encoded}`, "_blank");
+      toast.success("Booking submitted successfully!");
+      onClose();
+      setStep(1);
+    } catch {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const canNext = () => {
@@ -53,6 +77,8 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
       default: return false;
     }
   };
+
+  const inputClass = "w-full px-4 py-2.5 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all";
 
   return (
     <AnimatePresence>
@@ -78,12 +104,7 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
                 <p className="text-xs font-medium text-muted-foreground">Step {step} of {totalSteps}</p>
                 <div className="flex gap-1 mt-2">
                   {Array.from({ length: totalSteps }).map((_, i) => (
-                    <div
-                      key={i}
-                      className={`h-1 rounded-full transition-all duration-300 ${
-                        i < step ? "bg-primary w-8" : "bg-border w-4"
-                      }`}
-                    />
+                    <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i < step ? "bg-primary w-8" : "bg-border w-4"}`} />
                   ))}
                 </div>
               </div>
@@ -95,13 +116,7 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
             {/* Body */}
             <div className="px-6 py-6 min-h-[280px]">
               <AnimatePresence mode="wait">
-                <motion.div
-                  key={step}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.2 }}
-                >
+                <motion.div key={step} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.2 }}>
                   {step === 1 && (
                     <div>
                       <h3 className="text-xl font-bold mb-2">What is your main goal?</h3>
@@ -112,9 +127,7 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
                             key={g.label}
                             onClick={() => setData({ ...data, goal: g.label })}
                             className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-xl border text-left transition-all text-sm font-medium ${
-                              data.goal === g.label
-                                ? "border-primary bg-primary/5 text-foreground"
-                                : "border-border hover:border-primary/30"
+                              data.goal === g.label ? "border-primary bg-primary/5 text-foreground" : "border-border hover:border-primary/30"
                             }`}
                           >
                             <g.icon className={`h-5 w-5 ${data.goal === g.label ? "text-electric" : "text-muted-foreground"}`} />
@@ -137,13 +150,7 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
                         ].map((field) => (
                           <div key={field.key}>
                             <label className="text-sm font-medium mb-1.5 block">{field.label}</label>
-                            <input
-                              type="text"
-                              placeholder={field.placeholder}
-                              value={(data as any)[field.key]}
-                              onChange={(e) => setData({ ...data, [field.key]: e.target.value })}
-                              className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                            />
+                            <input type="text" placeholder={field.placeholder} value={(data as any)[field.key]} onChange={(e) => setData({ ...data, [field.key]: e.target.value })} className={inputClass} />
                           </div>
                         ))}
                       </div>
@@ -155,13 +162,7 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
                       <h3 className="text-xl font-bold mb-2">Digital Checkup</h3>
                       <p className="text-sm text-muted-foreground mb-6">Share your current website so we can assess opportunities.</p>
                       <label className="text-sm font-medium mb-1.5 block">Current Website URL</label>
-                      <input
-                        type="url"
-                        placeholder="https://yourwebsite.com (optional)"
-                        value={data.website}
-                        onChange={(e) => setData({ ...data, website: e.target.value })}
-                        className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                      />
+                      <input type="url" placeholder="https://yourwebsite.com (optional)" value={data.website} onChange={(e) => setData({ ...data, website: e.target.value })} className={inputClass} />
                     </div>
                   )}
 
@@ -172,15 +173,7 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
                       <label className="text-sm font-medium mb-2 block">Budget Range</label>
                       <div className="grid grid-cols-2 gap-2 mb-6">
                         {budgets.map((b) => (
-                          <button
-                            key={b}
-                            onClick={() => setData({ ...data, budget: b })}
-                            className={`px-3 py-2.5 rounded-xl border text-sm font-medium transition-all ${
-                              data.budget === b
-                                ? "border-primary bg-primary/5"
-                                : "border-border hover:border-primary/30"
-                            }`}
-                          >
+                          <button key={b} onClick={() => setData({ ...data, budget: b })} className={`px-3 py-2.5 rounded-xl border text-sm font-medium transition-all ${data.budget === b ? "border-primary bg-primary/5" : "border-border hover:border-primary/30"}`}>
                             {b}
                           </button>
                         ))}
@@ -188,21 +181,11 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
                       <div className="grid grid-cols-2 gap-4">
                         <div>
                           <label className="text-sm font-medium mb-1.5 block">Preferred Date</label>
-                          <input
-                            type="date"
-                            value={data.meetDate}
-                            onChange={(e) => setData({ ...data, meetDate: e.target.value })}
-                            className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                          />
+                          <input type="date" value={data.meetDate} onChange={(e) => setData({ ...data, meetDate: e.target.value })} className={inputClass} />
                         </div>
                         <div>
                           <label className="text-sm font-medium mb-1.5 block">Preferred Time</label>
-                          <input
-                            type="time"
-                            value={data.meetTime}
-                            onChange={(e) => setData({ ...data, meetTime: e.target.value })}
-                            className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                          />
+                          <input type="time" value={data.meetTime} onChange={(e) => setData({ ...data, meetTime: e.target.value })} className={inputClass} />
                         </div>
                       </div>
                     </div>
@@ -215,23 +198,11 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
                       <div className="space-y-4">
                         <div>
                           <label className="text-sm font-medium mb-1.5 block">WhatsApp Number</label>
-                          <input
-                            type="tel"
-                            placeholder="+237 6XX XXX XXX"
-                            value={data.whatsapp}
-                            onChange={(e) => setData({ ...data, whatsapp: e.target.value })}
-                            className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                          />
+                          <input type="tel" placeholder="+237 6XX XXX XXX" value={data.whatsapp} onChange={(e) => setData({ ...data, whatsapp: e.target.value })} className={inputClass} />
                         </div>
                         <div>
                           <label className="text-sm font-medium mb-1.5 block">Email Address</label>
-                          <input
-                            type="email"
-                            placeholder="you@company.com"
-                            value={data.email}
-                            onChange={(e) => setData({ ...data, email: e.target.value })}
-                            className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                          />
+                          <input type="email" placeholder="you@company.com" value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} className={inputClass} />
                         </div>
                       </div>
                     </div>
@@ -242,28 +213,16 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
 
             {/* Footer */}
             <div className="flex items-center justify-between px-6 py-4 border-t border-border">
-              <button
-                onClick={prev}
-                disabled={step === 1}
-                className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground disabled:opacity-30 transition-colors"
-              >
+              <button onClick={prev} disabled={step === 1} className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground disabled:opacity-30 transition-colors">
                 <ArrowLeft className="h-4 w-4" /> Back
               </button>
               {step < totalSteps ? (
-                <button
-                  onClick={next}
-                  disabled={!canNext()}
-                  className="flex items-center gap-1 px-5 py-2.5 bg-primary text-primary-foreground text-sm font-semibold rounded-xl disabled:opacity-40 hover:scale-[1.02] transition-all"
-                >
+                <button onClick={next} disabled={!canNext()} className="flex items-center gap-1 px-5 py-2.5 bg-primary text-primary-foreground text-sm font-semibold rounded-xl disabled:opacity-40 hover:scale-[1.02] transition-all">
                   Continue <ArrowRight className="h-4 w-4" />
                 </button>
               ) : (
-                <button
-                  onClick={handleSubmit}
-                  disabled={!canNext()}
-                  className="flex items-center gap-1 px-5 py-2.5 bg-primary text-primary-foreground text-sm font-semibold rounded-xl disabled:opacity-40 hover:scale-[1.02] transition-all"
-                >
-                  <Send className="h-4 w-4" /> Book My Call
+                <button onClick={handleSubmit} disabled={!canNext() || submitting} className="flex items-center gap-1 px-5 py-2.5 bg-primary text-primary-foreground text-sm font-semibold rounded-xl disabled:opacity-40 hover:scale-[1.02] transition-all">
+                  <Send className="h-4 w-4" /> {submitting ? "Submitting..." : "Book My Call"}
                 </button>
               )}
             </div>

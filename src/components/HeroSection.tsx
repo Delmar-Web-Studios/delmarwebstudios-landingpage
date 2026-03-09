@@ -3,7 +3,7 @@ import heroShowcase from "@/assets/hero-showcase.png";
 
 export function HeroSection({ onCta }: { onCta: () => void }) {
   return (
-    <section className="relative pt-32 pb-16 lg:pt-44 lg:pb-24 overflow-hidden">
+    <section className="relative pt-32 pb-0 lg:pt-44 lg:pb-0 overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8 text-center max-w-4xl">
         {/* Eyebrow */}
         <motion.p
@@ -42,7 +42,7 @@ export function HeroSection({ onCta }: { onCta: () => void }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col items-center gap-3"
+          className="flex flex-col items-center gap-3 mb-16"
         >
           <button
             onClick={onCta}
@@ -54,21 +54,19 @@ export function HeroSection({ onCta }: { onCta: () => void }) {
         </motion.div>
       </div>
 
-      {/* Showcase Image */}
+      {/* Showcase Image - seamless, no border, no zoom */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
-        className="container mx-auto px-4 lg:px-8 mt-16"
+        className="w-full"
       >
-        <div className="rounded-2xl overflow-hidden shadow-premium border border-border">
-          <img
-            src={heroShowcase}
-            alt="Premium website designs by Delmar Web Studios"
-            className="w-full h-auto object-cover"
-            loading="lazy"
-          />
-        </div>
+        <img
+          src={heroShowcase}
+          alt="Premium website designs by Delmar Web Studios"
+          className="w-full h-auto block"
+          style={{ imageRendering: "auto" }}
+        />
       </motion.div>
     </section>
   );

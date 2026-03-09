@@ -1,19 +1,20 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 import delmarLogo from "@/assets/delmar-logo.png";
 
 const navItems = [
   {
     label: "Services",
     dropdown: [
-      { label: "Landing Pages", href: "#services" },
-      { label: "E-commerce", href: "#services" },
-      { label: "AI Chatbots", href: "#services" },
+      { label: "Web Design", href: "/web-design" },
+      { label: "E-commerce", href: "/ecommerce" },
+      { label: "AI Automation", href: "/ai-automation" },
     ],
   },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Blog", href: "#blog" },
+  { label: "Portfolio", href: "/#portfolio" },
+  { label: "Blog", href: "/#blog" },
 ];
 
 export function Navbar({ onGetStarted }: { onGetStarted: () => void }) {
@@ -35,10 +36,10 @@ export function Navbar({ onGetStarted }: { onGetStarted: () => void }) {
     >
       <div className="container mx-auto flex items-center justify-between h-16 px-4 lg:px-8">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2">
-          <img src={delmarLogo} alt="Delmar Web Studios" className="h-9 w-9 rounded-lg" />
-          <span className="font-bold text-lg tracking-tight">Delmar Web</span>
-        </a>
+        <Link to="/" className="flex items-center gap-2.5">
+          <img src={delmarLogo} alt="Delmar Web Studios" className="h-10 w-10 rounded-xl object-contain" />
+          <span className="font-bold text-lg tracking-tight">Delmar Web Studios</span>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
@@ -63,26 +64,26 @@ export function Navbar({ onGetStarted }: { onGetStarted: () => void }) {
                       className="absolute top-full left-0 mt-2 w-48 bg-background rounded-lg shadow-premium border border-border p-2"
                     >
                       {item.dropdown.map((sub) => (
-                        <a
+                        <Link
                           key={sub.label}
-                          href={sub.href}
+                          to={sub.href}
                           className="block px-3 py-2 text-sm rounded-md hover:bg-secondary transition-colors"
                         >
                           {sub.label}
-                        </a>
+                        </Link>
                       ))}
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
             ) : (
-              <a
+              <Link
                 key={item.label}
-                href={item.href}
+                to={item.href!}
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.label}
-              </a>
+              </Link>
             )
           )}
         </div>
@@ -119,25 +120,25 @@ export function Navbar({ onGetStarted }: { onGetStarted: () => void }) {
                   <div key={item.label} className="space-y-2">
                     <span className="text-sm font-medium text-muted-foreground">{item.label}</span>
                     {item.dropdown.map((sub) => (
-                      <a
+                      <Link
                         key={sub.label}
-                        href={sub.href}
+                        to={sub.href}
                         className="block pl-4 text-sm py-1 text-foreground"
                         onClick={() => setMobileOpen(false)}
                       >
                         {sub.label}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 ) : (
-                  <a
+                  <Link
                     key={item.label}
-                    href={item.href}
+                    to={item.href!}
                     className="block text-sm font-medium py-1"
                     onClick={() => setMobileOpen(false)}
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 )
               )}
               <button
