@@ -11,7 +11,7 @@ const clients = [
 
 export function PortfolioSection() {
   return (
-    <section id="portfolio" className="py-20 lg:py-28 surface-elevated">
+    <section id="portfolio" className="py-20 lg:py-28 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <p className="text-sm font-semibold tracking-[0.15em] uppercase text-electric mb-3">
@@ -33,7 +33,7 @@ export function PortfolioSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="bg-background rounded-xl p-6 shadow-card border border-border flex flex-col items-center justify-center hover:shadow-premium transition-shadow duration-300"
+              className="bg-background rounded-xl p-6 border border-[hsl(var(--border))] flex flex-col items-center justify-center hover:shadow-premium transition-shadow duration-300"
             >
               <img
                 src={client.logo}
