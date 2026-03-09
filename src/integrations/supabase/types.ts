@@ -14,7 +14,90 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          budget: string | null
+          business_name: string
+          created_at: string
+          email: string
+          goal: string
+          id: string
+          industry: string
+          meet_date: string | null
+          meet_time: string | null
+          name: string
+          website_url: string | null
+          whatsapp: string
+        }
+        Insert: {
+          budget?: string | null
+          business_name: string
+          created_at?: string
+          email: string
+          goal: string
+          id?: string
+          industry: string
+          meet_date?: string | null
+          meet_time?: string | null
+          name: string
+          website_url?: string | null
+          whatsapp: string
+        }
+        Update: {
+          budget?: string | null
+          business_name?: string
+          created_at?: string
+          email?: string
+          goal?: string
+          id?: string
+          industry?: string
+          meet_date?: string | null
+          meet_time?: string | null
+          name?: string
+          website_url?: string | null
+          whatsapp?: string
+        }
+        Relationships: []
+      }
+      payments: {
+        Row: {
+          amount_xaf: number
+          business_name: string
+          created_at: string
+          email: string
+          id: string
+          payment_method: string
+          payment_number: string
+          status: string
+          website_url: string | null
+          whatsapp: string
+        }
+        Insert: {
+          amount_xaf: number
+          business_name: string
+          created_at?: string
+          email: string
+          id?: string
+          payment_method: string
+          payment_number: string
+          status?: string
+          website_url?: string | null
+          whatsapp: string
+        }
+        Update: {
+          amount_xaf?: number
+          business_name?: string
+          created_at?: string
+          email?: string
+          id?: string
+          payment_method?: string
+          payment_number?: string
+          status?: string
+          website_url?: string | null
+          whatsapp?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
