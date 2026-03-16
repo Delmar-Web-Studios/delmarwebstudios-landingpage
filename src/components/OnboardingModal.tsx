@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ArrowRight, ArrowLeft, Zap, Users, ShoppingCart, Send } from "lucide-react";
+import { X, ArrowRight, ArrowLeft, Zap, Users, ShoppingCart, Send, Check } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { Calendar } from "@/components/ui/calendar";
 
 interface OnboardingModalProps {
   open: boolean;
@@ -15,19 +16,27 @@ const goals = [
   { label: "Scale E-commerce", icon: ShoppingCart },
 ];
 
-const budgets = ["150 000 – 500 000 FCFA", "500 000 – 1 500 000 FCFA", "1 500 000 – 5 000 000 FCFA", "5 000 000+ FCFA"];
+const timeSlots = [
+  "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
+  "12:00", "12:30", "14:00", "14:30", "15:00", "15:30",
+  "16:00", "16:30", "17:00",
+];
+
+function isWeekend(date: Date) {
+  const day = date.getDay();
+  return day === 0 || day === 6;
+}
 
 export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
   const [step, setStep] = useState(1);
   const [submitting, setSubmitting] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>();
   const [data, setData] = useState({
     goal: "",
     name: "",
     business: "",
     industry: "",
     website: "",
-    budget: "",
-    meetDate: "",
     meetTime: "",
     whatsapp: "",
     email: "",
@@ -40,21 +49,22 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
   const handleSubmit = async () => {
     setSubmitting(true);
     try {
+      const meetDate = selectedDate ? selectedDate.toISOString().split("T")[0] : null;
       const { error } = await supabase.from("bookings").insert({
         goal: data.goal,
         name: data.name,
         business_name: data.business,
         industry: data.industry,
         website_url: data.website || null,
-        budget: data.budget,
-        meet_date: data.meetDate || null,
+        budget: null,
+        meet_date: meetDate,
         meet_time: data.meetTime || null,
         whatsapp: data.whatsapp,
         email: data.email,
       });
       if (error) throw error;
 
-      const msg = `Hi! I'm ${data.name} from ${data.business} (${data.industry}). Goal: ${data.goal}. Budget: ${data.budget}. Website: ${data.website || "N/A"}. Meet: ${data.meetDate} ${data.meetTime}. Email: ${data.email}`;
+      const msg = `Hi! I'm ${data.name} from ${data.business} (${data.industry}). Goal: ${data.goal}. Website: ${data.website || "N/A"}. Meet: ${meetDate} ${data.meetTime}. Email: ${data.email}`;
       const encoded = encodeURIComponent(msg);
       window.open(`https://wa.me/${data.whatsapp.replace(/\D/g, "")}?text=${encoded}`, "_blank");
       toast.success("Booking submitted successfully!");
@@ -72,7 +82,7 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
       case 1: return !!data.goal;
       case 2: return data.name.trim() && data.business.trim() && data.industry.trim();
       case 3: return true;
-      case 4: return !!data.budget;
+      case 4: return !!selectedDate && !!data.meetTime;
       case 5: return data.whatsapp.trim() && data.email.trim();
       default: return false;
     }
@@ -168,25 +178,51 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
 
                   {step === 4 && (
                     <div>
-                      <h3 className="text-xl font-bold mb-2">Project Scope</h3>
-                      <p className="text-sm text-muted-foreground mb-6">Help us understand your budget and availability.</p>
-                      <label className="text-sm font-medium mb-2 block">Budget Range</label>
-                      <div className="grid grid-cols-2 gap-2 mb-6">
-                        {budgets.map((b) => (
-                          <button key={b} onClick={() => setData({ ...data, budget: b })} className={`px-3 py-2.5 rounded-xl border text-sm font-medium transition-all ${data.budget === b ? "border-primary bg-primary/5" : "border-border hover:border-primary/30"}`}>
-                            {b}
-                          </button>
-                        ))}
-                      </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <label className="text-sm font-medium mb-1.5 block">Preferred Date</label>
-                          <input type="date" value={data.meetDate} onChange={(e) => setData({ ...data, meetDate: e.target.value })} className={inputClass} />
-                        </div>
-                        <div>
-                          <label className="text-sm font-medium mb-1.5 block">Preferred Time</label>
-                          <input type="time" value={data.meetTime} onChange={(e) => setData({ ...data, meetTime: e.target.value })} className={inputClass} />
-                        </div>
+                      <h3 className="text-xl font-bold mb-2">Pick a Date & Time</h3>
+                      <p className="text-sm text-muted-foreground mb-4">Choose an available slot for your Google Meet call.</p>
+
+                      <div className="flex flex-col items-center">
+                        <Calendar
+                          mode="single"
+                          selected={selectedDate}
+                          onSelect={(date) => {
+                            setSelectedDate(date);
+                            setData({ ...data, meetTime: "" });
+                          }}
+                          disabled={(date) => date < new Date() || isWeekend(date)}
+                          className="rounded-xl border border-border pointer-events-auto"
+                        />
+
+                        {selectedDate && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="mt-4 w-full"
+                          >
+                            <p className="text-sm font-medium mb-2">
+                              Available times for{" "}
+                              <span className="text-primary">
+                                {selectedDate.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" })}
+                              </span>
+                            </p>
+                            <div className="grid grid-cols-3 gap-2 max-h-[120px] overflow-y-auto">
+                              {timeSlots.map((t) => (
+                                <button
+                                  key={t}
+                                  onClick={() => setData({ ...data, meetTime: t })}
+                                  className={`px-3 py-2 rounded-lg border text-xs font-medium transition-all flex items-center justify-center gap-1 ${
+                                    data.meetTime === t
+                                      ? "border-primary bg-primary/10 text-primary"
+                                      : "border-border hover:border-primary/30"
+                                  }`}
+                                >
+                                  {data.meetTime === t && <Check className="h-3 w-3" />}
+                                  {t}
+                                </button>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
                       </div>
                     </div>
                   )}

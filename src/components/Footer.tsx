@@ -7,7 +7,7 @@ export function Footer() {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <Link to="/" className="flex items-center gap-2">
-            <img src={delmarLogo} alt="Delmar Web Studios" className="h-9 w-9 rounded-xl object-contain" />
+            <img src={delmarLogo} alt="Delmar Web Studios" className="h-7 w-7 rounded-lg object-contain" />
             <span className="font-bold text-sm">Delmar Web Studios</span>
           </Link>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">

@@ -59,12 +59,12 @@ export function HeroSection({ onCta }: { onCta: () => void }) {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
-        className="w-full"
+        className="w-full px-4 lg:px-8"
       >
         <img
           src={heroShowcase}
           alt="Premium website designs by Delmar Web Studios"
-          className="w-full h-auto block"
+          className="w-full h-auto block rounded-2xl"
           style={{ imageRendering: "auto" }}
         />
       </motion.div>
