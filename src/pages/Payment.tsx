@@ -105,8 +105,8 @@ export default function Payment() {
           <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
             <Check className="h-10 w-10 text-electric" />
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold mb-3">Project Funded <span className="text-gradient-blue">Successfully</span></h1>
-          <p className="text-muted-foreground text-lg">A confirmation receipt has been sent to your WhatsApp.</p>
+          <h1 className="text-3xl md:text-4xl font-bold mb-3">Projet financé avec <span className="text-gradient-blue">succès</span></h1>
+          <p className="text-muted-foreground text-lg">Un reçu de confirmation a été envoyé sur votre WhatsApp.</p>
         </motion.div>
       </div>
     );
@@ -123,35 +123,35 @@ export default function Payment() {
             {/* Form */}
             <div className="lg:col-span-3">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-                <h1 className="text-2xl md:text-3xl font-bold mb-2">Secure <span className="text-gradient-blue">Payment</span></h1>
-                <p className="text-muted-foreground mb-8">Complete your payment to fund your project.</p>
+                <h1 className="text-2xl md:text-3xl font-bold mb-2">Paiement <span className="text-gradient-blue">sécurisé</span></h1>
+                <p className="text-muted-foreground mb-8">Finalisez votre paiement pour financer votre projet.</p>
 
-                {/* Section 1 - Identity */}
+                {/* Section 1 - Identité */}
                 <div className="mb-6">
-                  <h3 className="text-sm font-semibold uppercase tracking-wider text-electric mb-4">1. Identity</h3>
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-electric mb-4">1. Identité</h3>
                   <div className="space-y-4">
                     <div className="relative">
-                      <label className="text-sm font-medium mb-1.5 block">Business Name *</label>
+                      <label className="text-sm font-medium mb-1.5 block">Nom de l'entreprise *</label>
                       <input
                         value={form.businessName}
                         onChange={(e) => setForm({ ...form, businessName: e.target.value })}
-                        placeholder="Your Business Name"
+                        placeholder="Nom de votre entreprise"
                         className={inputClass()}
                       />
                     </div>
                     <div>
-                      <label className="text-sm font-medium mb-1.5 block">Website URL</label>
+                      <label className="text-sm font-medium mb-1.5 block">URL du site</label>
                       <input
                         value={form.websiteUrl}
                         onChange={(e) => setForm({ ...form, websiteUrl: e.target.value })}
-                        placeholder="https://yourwebsite.com (optional)"
+                        placeholder="https://votresite.com (optionnel)"
                         className={inputClass()}
                       />
                     </div>
                   </div>
                   {canAdvance(1) && currentSection < 2 && (
                     <button onClick={() => setCurrentSection(2)} className="mt-4 flex items-center gap-1 text-sm font-semibold text-electric hover:underline">
-                      Continue <ArrowRight className="h-3.5 w-3.5" />
+                      Continuer <ArrowRight className="h-3.5 w-3.5" />
                     </button>
                   )}
                 </div>
@@ -163,19 +163,19 @@ export default function Payment() {
                       <h3 className="text-sm font-semibold uppercase tracking-wider text-electric mb-4">2. Contact</h3>
                       <div className="space-y-4">
                         <div className="relative">
-                          <label className="text-sm font-medium mb-1.5 block">WhatsApp Number *</label>
+                          <label className="text-sm font-medium mb-1.5 block">Numéro WhatsApp *</label>
                           <input value={form.whatsapp} onChange={(e) => setForm({ ...form, whatsapp: e.target.value })} placeholder="+237 6XX XXX XXX" className={inputClass("whatsapp")} />
                           {validIcon("whatsapp")}
                         </div>
                         <div className="relative">
-                          <label className="text-sm font-medium mb-1.5 block">Email Address *</label>
-                          <input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="you@company.com" className={inputClass("email")} />
+                          <label className="text-sm font-medium mb-1.5 block">Adresse Email *</label>
+                          <input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="vous@entreprise.com" className={inputClass("email")} />
                           {validIcon("email")}
                         </div>
                       </div>
                       {canAdvance(2) && currentSection < 3 && (
                         <button onClick={() => setCurrentSection(3)} className="mt-4 flex items-center gap-1 text-sm font-semibold text-electric hover:underline">
-                          Continue <ArrowRight className="h-3.5 w-3.5" />
+                          Continuer <ArrowRight className="h-3.5 w-3.5" />
                         </button>
                       )}
                     </motion.div>
@@ -186,7 +186,7 @@ export default function Payment() {
                 <AnimatePresence>
                   {currentSection >= 3 && (
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
-                      <h3 className="text-sm font-semibold uppercase tracking-wider text-electric mb-4">3. Payment Method</h3>
+                      <h3 className="text-sm font-semibold uppercase tracking-wider text-electric mb-4">3. Mode de paiement</h3>
                       <div className="grid grid-cols-2 gap-4">
                         {[
                           { id: "orange_money" as PaymentMethod, label: "Orange Money", img: orangeMoney },
@@ -222,16 +222,16 @@ export default function Payment() {
                       <h3 className="text-sm font-semibold uppercase tracking-wider text-electric mb-4">4. Transaction</h3>
                       <div className="space-y-4">
                         <div>
-                          <label className="text-sm font-medium mb-1.5 block">Amount to Pay (FCFA) *</label>
+                          <label className="text-sm font-medium mb-1.5 block">Montant à payer (FCFA) *</label>
                           <input
                             value={form.amount ? `${formatXAF(form.amount)} FCFA` : ""}
                             onChange={(e) => setForm({ ...form, amount: e.target.value.replace(/[^0-9]/g, "") })}
-                            placeholder="e.g. 500 000 FCFA"
+                            placeholder="ex. 500 000 FCFA"
                             className={inputClass()}
                           />
                         </div>
                         <div className="relative">
-                          <label className="text-sm font-medium mb-1.5 block">Your Payment Number *</label>
+                          <label className="text-sm font-medium mb-1.5 block">Votre numéro de paiement *</label>
                           <input value={form.paymentNumber} onChange={(e) => setForm({ ...form, paymentNumber: e.target.value })} placeholder="+237 6XX XXX XXX" className={inputClass("paymentNumber")} />
                           {validIcon("paymentNumber")}
                         </div>
@@ -246,10 +246,10 @@ export default function Payment() {
                         {submitting ? (
                           <>
                             <Loader2 className="h-5 w-5 animate-spin" />
-                            Verifying Transaction...
+                            Vérification de la transaction...
                           </>
                         ) : (
-                          "Pay Now"
+                          "Payer maintenant"
                         )}
                       </button>
                     </motion.div>
@@ -266,10 +266,10 @@ export default function Payment() {
                   animate={{ opacity: 1, x: 0 }}
                   className="bg-background rounded-2xl border border-[hsl(var(--border))] p-6 shadow-card"
                 >
-                  <h3 className="text-sm font-semibold uppercase tracking-wider text-electric mb-4">Digital Invoice</h3>
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-electric mb-4">Facture digitale</h3>
                   <div className="space-y-4">
                     <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Business</span>
+                      <span className="text-muted-foreground">Entreprise</span>
                       <span className="font-medium">{form.businessName || "—"}</span>
                     </div>
                     <div className="h-px bg-border" />
@@ -284,14 +284,14 @@ export default function Payment() {
                     </div>
                     <div className="h-px bg-border" />
                     <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Method</span>
+                      <span className="text-muted-foreground">Méthode</span>
                       <span className="font-medium">
                         {form.paymentMethod === "orange_money" ? "Orange Money" : form.paymentMethod === "mtn_momo" ? "MTN MoMo" : "—"}
                       </span>
                     </div>
                     <div className="h-px bg-border" />
                     <div className="flex justify-between items-center">
-                      <span className="text-muted-foreground text-sm">Amount</span>
+                      <span className="text-muted-foreground text-sm">Montant</span>
                       <span className="text-xl font-bold text-gradient-blue">
                         {form.amount ? `${formatXAF(form.amount)} FCFA` : "—"}
                       </span>
