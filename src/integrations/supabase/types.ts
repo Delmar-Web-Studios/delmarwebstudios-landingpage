@@ -109,6 +109,36 @@ export type Database = {
         }
         Relationships: []
       }
+      autocanvas_templates: {
+        Row: {
+          background: Json
+          created_at: string
+          id: string
+          layers: Json
+          name: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          background?: Json
+          created_at?: string
+          id?: string
+          layers?: Json
+          name: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          background?: Json
+          created_at?: string
+          id?: string
+          layers?: Json
+          name?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       binary_data: {
         Row: {
           createdAt: string
@@ -1416,6 +1446,33 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
       }
       project: {
         Row: {
