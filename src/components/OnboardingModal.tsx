@@ -11,9 +11,9 @@ interface OnboardingModalProps {
 }
 
 const goals = [
-  { label: "Get More Leads", icon: Zap },
-  { label: "Automate Support", icon: Users },
-  { label: "Scale E-commerce", icon: ShoppingCart },
+  { label: "Obtenir plus de leads", icon: Zap },
+  { label: "Automatiser le support", icon: Users },
+  { label: "Développer mon e-commerce", icon: ShoppingCart },
 ];
 
 const timeSlots = [
@@ -64,14 +64,14 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
       });
       if (error) throw error;
 
-      const msg = `Hi! I'm ${data.name} from ${data.business} (${data.industry}). Goal: ${data.goal}. Website: ${data.website || "N/A"}. Meet: ${meetDate} ${data.meetTime}. Email: ${data.email}`;
+      const msg = `Bonjour ! Je suis ${data.name} de ${data.business} (${data.industry}). Objectif : ${data.goal}. Site : ${data.website || "N/A"}. RDV : ${meetDate} à ${data.meetTime}. Email : ${data.email}`;
       const encoded = encodeURIComponent(msg);
       window.open(`https://wa.me/${data.whatsapp.replace(/\D/g, "")}?text=${encoded}`, "_blank");
-      toast.success("Booking submitted successfully!");
+      toast.success("Réservation envoyée avec succès !");
       onClose();
       setStep(1);
     } catch {
-      toast.error("Something went wrong. Please try again.");
+      toast.error("Une erreur est survenue. Veuillez réessayer.");
     } finally {
       setSubmitting(false);
     }
@@ -111,7 +111,7 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-border">
               <div>
-                <p className="text-xs font-medium text-muted-foreground">Step {step} of {totalSteps}</p>
+                <p className="text-xs font-medium text-muted-foreground">Étape {step} sur {totalSteps}</p>
                 <div className="flex gap-1 mt-2">
                   {Array.from({ length: totalSteps }).map((_, i) => (
                     <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i < step ? "bg-primary w-8" : "bg-border w-4"}`} />
@@ -129,8 +129,8 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
                 <motion.div key={step} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.2 }}>
                   {step === 1 && (
                     <div>
-                      <h3 className="text-xl font-bold mb-2">What is your main goal?</h3>
-                      <p className="text-sm text-muted-foreground mb-6">Select the option that best describes your needs.</p>
+                      <h3 className="text-xl font-bold mb-2">Quel est votre objectif principal ?</h3>
+                      <p className="text-sm text-muted-foreground mb-6">Sélectionnez l'option qui correspond le mieux à vos besoins.</p>
                       <div className="space-y-3">
                         {goals.map((g) => (
                           <button
@@ -150,13 +150,13 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
 
                   {step === 2 && (
                     <div>
-                      <h3 className="text-xl font-bold mb-2">Tell us about your brand</h3>
-                      <p className="text-sm text-muted-foreground mb-6">We'll use this to personalize your experience.</p>
+                      <h3 className="text-xl font-bold mb-2">Parlez-nous de votre marque</h3>
+                      <p className="text-sm text-muted-foreground mb-6">Nous utiliserons ces informations pour personnaliser votre expérience.</p>
                       <div className="space-y-4">
                         {[
-                          { key: "name", label: "Your Name", placeholder: "John Doe" },
-                          { key: "business", label: "Business Name", placeholder: "Acme Inc." },
-                          { key: "industry", label: "Industry", placeholder: "Education, Real Estate..." },
+                          { key: "name", label: "Votre Nom", placeholder: "Jean Dupont" },
+                          { key: "business", label: "Nom de l'Entreprise", placeholder: "Acme SARL" },
+                          { key: "industry", label: "Secteur d'activité", placeholder: "Éducation, Immobilier..." },
                         ].map((field) => (
                           <div key={field.key}>
                             <label className="text-sm font-medium mb-1.5 block">{field.label}</label>
@@ -169,17 +169,17 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
 
                   {step === 3 && (
                     <div>
-                      <h3 className="text-xl font-bold mb-2">Digital Checkup</h3>
-                      <p className="text-sm text-muted-foreground mb-6">Share your current website so we can assess opportunities.</p>
-                      <label className="text-sm font-medium mb-1.5 block">Current Website URL</label>
-                      <input type="url" placeholder="https://yourwebsite.com (optional)" value={data.website} onChange={(e) => setData({ ...data, website: e.target.value })} className={inputClass} />
+                      <h3 className="text-xl font-bold mb-2">Diagnostic Digital</h3>
+                      <p className="text-sm text-muted-foreground mb-6">Partagez votre site actuel pour que nous évaluions les opportunités.</p>
+                      <label className="text-sm font-medium mb-1.5 block">URL de votre site actuel</label>
+                      <input type="url" placeholder="https://votresite.com (optionnel)" value={data.website} onChange={(e) => setData({ ...data, website: e.target.value })} className={inputClass} />
                     </div>
                   )}
 
                   {step === 4 && (
                     <div>
-                      <h3 className="text-xl font-bold mb-2">Pick a Date & Time</h3>
-                      <p className="text-sm text-muted-foreground mb-4">Choose an available slot for your Google Meet call.</p>
+                      <h3 className="text-xl font-bold mb-2">Choisissez une date et une heure</h3>
+                      <p className="text-sm text-muted-foreground mb-4">Sélectionnez un créneau disponible pour votre appel Google Meet.</p>
 
                       <div className="flex flex-col items-center">
                         <Calendar
@@ -200,9 +200,9 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
                             className="mt-4 w-full"
                           >
                             <p className="text-sm font-medium mb-2">
-                              Available times for{" "}
+                              Créneaux disponibles pour le{" "}
                               <span className="text-primary">
-                                {selectedDate.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" })}
+                                {selectedDate.toLocaleDateString("fr-FR", { weekday: "long", month: "long", day: "numeric" })}
                               </span>
                             </p>
                             <div className="grid grid-cols-3 gap-2 max-h-[120px] overflow-y-auto">
@@ -229,16 +229,16 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
 
                   {step === 5 && (
                     <div>
-                      <h3 className="text-xl font-bold mb-2">Final Step</h3>
-                      <p className="text-sm text-muted-foreground mb-6">We'll send your Google Meet link via WhatsApp and email.</p>
+                      <h3 className="text-xl font-bold mb-2">Dernière étape</h3>
+                      <p className="text-sm text-muted-foreground mb-6">Nous vous enverrons le lien Google Meet par WhatsApp et email.</p>
                       <div className="space-y-4">
                         <div>
-                          <label className="text-sm font-medium mb-1.5 block">WhatsApp Number</label>
+                          <label className="text-sm font-medium mb-1.5 block">Numéro WhatsApp</label>
                           <input type="tel" placeholder="+237 6XX XXX XXX" value={data.whatsapp} onChange={(e) => setData({ ...data, whatsapp: e.target.value })} className={inputClass} />
                         </div>
                         <div>
-                          <label className="text-sm font-medium mb-1.5 block">Email Address</label>
-                          <input type="email" placeholder="you@company.com" value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} className={inputClass} />
+                          <label className="text-sm font-medium mb-1.5 block">Adresse Email</label>
+                          <input type="email" placeholder="vous@entreprise.com" value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} className={inputClass} />
                         </div>
                       </div>
                     </div>
@@ -250,15 +250,15 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
             {/* Footer */}
             <div className="flex items-center justify-between px-6 py-4 border-t border-border">
               <button onClick={prev} disabled={step === 1} className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground disabled:opacity-30 transition-colors">
-                <ArrowLeft className="h-4 w-4" /> Back
+                <ArrowLeft className="h-4 w-4" /> Retour
               </button>
               {step < totalSteps ? (
                 <button onClick={next} disabled={!canNext()} className="flex items-center gap-1 px-5 py-2.5 bg-primary text-primary-foreground text-sm font-semibold rounded-xl disabled:opacity-40 hover:scale-[1.02] transition-all">
-                  Continue <ArrowRight className="h-4 w-4" />
+                  Continuer <ArrowRight className="h-4 w-4" />
                 </button>
               ) : (
                 <button onClick={handleSubmit} disabled={!canNext() || submitting} className="flex items-center gap-1 px-5 py-2.5 bg-primary text-primary-foreground text-sm font-semibold rounded-xl disabled:opacity-40 hover:scale-[1.02] transition-all">
-                  <Send className="h-4 w-4" /> {submitting ? "Submitting..." : "Book My Call"}
+                  <Send className="h-4 w-4" /> {submitting ? "Envoi en cours..." : "Réserver mon appel"}
                 </button>
               )}
             </div>
