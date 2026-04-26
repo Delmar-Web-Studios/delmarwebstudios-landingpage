@@ -12,33 +12,36 @@ import screenshotChatbot from "@/assets/screenshot-chatbot.png";
 const services = [
   {
     icon: Layout,
-    title: "Web Design",
-    headline: "High-Performance Landing Pages for Modern Institutions",
-    description: "Elevate your brand authority with fast, responsive, and elite-level web design.",
+    title: "Design Web",
+    headline: "Landing pages haute performance pour institutions modernes",
+    description: "Renforcez votre autorité de marque avec un design web rapide, responsive et haut de gamme.",
     logo: logoEcole,
     screenshot: screenshotEcole,
     clientName: "Ecole Canadienne Internationale",
     href: "/web-design",
+    cta: "En savoir plus",
   },
   {
     icon: ShoppingCart,
     title: "E-commerce",
-    headline: "Turn Your Inventory Into a Global Revenue Stream",
-    description: "Scalable online stores designed for seamless shopping and high conversion rates.",
+    headline: "Transformez votre stock en source de revenus mondiale",
+    description: "Boutiques en ligne évolutives conçues pour un parcours d'achat fluide et un fort taux de conversion.",
     logo: logoSauvons,
     screenshot: screenshotSauvons,
     clientName: "SauvonsTonExam",
     href: "/ecommerce",
+    cta: "En savoir plus",
   },
   {
     icon: Bot,
-    title: "AI Automation",
-    headline: "Automate Your Engagement With Intelligent AI Agents",
-    description: "Deploy smart chatbots on WhatsApp, Facebook, and Instagram to handle leads 24/7.",
+    title: "Automatisation IA",
+    headline: "Automatisez vos échanges avec des agents IA intelligents",
+    description: "Déployez des chatbots intelligents sur WhatsApp, Facebook et Instagram pour gérer vos leads 24/7.",
     logo: null,
     screenshot: screenshotChatbot,
-    clientName: "AI Chat Interface",
+    clientName: "Interface IA Conversationnelle",
     href: "/ai-automation",
+    cta: "En savoir plus",
   },
 ];
 
@@ -49,13 +52,13 @@ export function ServicesSection() {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <p className="text-sm font-semibold tracking-[0.15em] uppercase text-electric mb-3">
-            Our Services
+            Nos Services
           </p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-            Everything You Need to <span className="text-gradient-blue">Dominate</span> Online
+            Tout ce qu'il vous faut pour <span className="text-gradient-blue">dominer</span> en ligne
           </h2>
           <p className="text-muted-foreground text-lg">
-            From stunning websites to AI-powered customer engagement — we handle the tech so you can focus on growth.
+            Des sites web époustouflants à l'IA conversationnelle — nous gérons la tech pour que vous puissiez vous concentrer sur la croissance.
           </p>
         </div>
 
@@ -98,7 +101,7 @@ export function ServicesSection() {
                 <h3 className="text-lg font-bold mb-2 group-hover:text-electric transition-colors">{service.headline}</h3>
                 <p className="text-sm text-muted-foreground mb-4">{service.description}</p>
                 <span className="inline-flex items-center gap-1 text-sm font-semibold text-electric">
-                  Learn More <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                  En savoir plus <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </Link>
             </motion.div>
