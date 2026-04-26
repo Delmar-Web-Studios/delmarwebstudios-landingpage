@@ -8,6 +8,7 @@ import WebDesign from "./pages/WebDesign";
 import Ecommerce from "./pages/Ecommerce";
 import AiAutomation from "./pages/AiAutomation";
 import Payment from "./pages/Payment";
+import Legal from "./pages/Legal";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/ecommerce" element={<Ecommerce />} />
           <Route path="/ai-automation" element={<AiAutomation />} />
           <Route path="/delmarstudiosweb-payment-client" element={<Payment />} />
+          <Route path="/legal" element={<Legal />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
