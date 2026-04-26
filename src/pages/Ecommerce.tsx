@@ -9,10 +9,10 @@ import logoSauvons from "@/assets/logo-sauvonstonexam.png";
 import screenshotSauvons from "@/assets/screenshot-sauvonstonexam.png";
 
 const features = [
-  { icon: CreditCard, title: "Payment Integration", desc: "Accept Mobile Money, bank transfers, and international cards seamlessly." },
-  { icon: Package, title: "Inventory Management", desc: "Real-time stock tracking and automated alerts to never miss a sale." },
-  { icon: BarChart3, title: "Analytics Dashboard", desc: "Track revenue, conversion rates, and customer behavior in one place." },
-  { icon: Smartphone, title: "Mobile Commerce", desc: "Optimized for Africa's mobile-first market with WhatsApp checkout." },
+  { icon: CreditCard, title: "Intégration des paiements", desc: "Acceptez Mobile Money, virements bancaires et cartes internationales sans friction." },
+  { icon: Package, title: "Gestion de stock", desc: "Suivi de stock en temps réel et alertes automatiques pour ne jamais manquer une vente." },
+  { icon: BarChart3, title: "Tableau de bord analytique", desc: "Suivez chiffre d'affaires, taux de conversion et comportement clients en un seul endroit." },
+  { icon: Smartphone, title: "Commerce mobile", desc: "Optimisé pour le marché mobile-first africain avec checkout WhatsApp." },
 ];
 
 export default function Ecommerce() {
@@ -32,20 +32,20 @@ export default function Ecommerce() {
                 <span className="text-xs font-semibold uppercase tracking-[0.15em] text-electric">E-Commerce</span>
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight mb-4">
-                Turn Your <span className="text-gradient-blue">Inventory</span> Into a <span className="text-gradient-blue">Global</span> Revenue Stream
+                Transformez votre <span className="text-gradient-blue">stock</span> en source de revenus <span className="text-gradient-blue">mondiale</span>
               </h1>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Scalable online stores designed for seamless shopping and high conversion rates.
+                Boutiques en ligne évolutives conçues pour un parcours d'achat fluide et un fort taux de conversion.
               </p>
               <button onClick={() => setModalOpen(true)} className="px-8 py-4 bg-foreground text-background text-base font-semibold rounded-xl btn-glow hover:scale-[1.03] transition-all duration-200">
-                Launch Your Store →
+                Lancer ma boutique →
               </button>
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.2 }}>
               <div className="relative">
                 <div className="rounded-2xl overflow-hidden border border-[hsl(var(--border))] shadow-premium">
-                  <img src={screenshotSauvons} alt="SauvonsTonExam platform" className="w-full h-auto" />
+                  <img src={screenshotSauvons} alt="Plateforme SauvonsTonExam" className="w-full h-auto" />
                 </div>
                 <div className="absolute -bottom-4 -left-4 bg-background rounded-xl p-3 border border-[hsl(var(--border))] shadow-card flex items-center gap-2">
                   <img src={logoSauvons} alt="SauvonsTonExam" className="h-8 w-8 rounded-lg object-contain" />
@@ -60,7 +60,7 @@ export default function Ecommerce() {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
-            Built for <span className="text-gradient-blue">African Commerce</span>
+            Conçu pour le <span className="text-gradient-blue">commerce africain</span>
           </h2>
           <div className="grid sm:grid-cols-2 gap-6">
             {features.map((f, i) => (

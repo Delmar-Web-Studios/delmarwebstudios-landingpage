@@ -18,10 +18,10 @@ export function PortfolioSection() {
             Portfolio
           </p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-            Trusted by <span className="text-gradient-blue">Ambitious</span> Brands
+            La confiance des marques <span className="text-gradient-blue">ambitieuses</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            We've helped businesses across Africa establish their digital authority.
+            Nous avons accompagné des entreprises à travers l'Afrique pour bâtir leur autorité digitale.
           </p>
         </div>
 

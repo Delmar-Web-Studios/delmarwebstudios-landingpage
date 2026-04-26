@@ -8,13 +8,13 @@ const navItems = [
   {
     label: "Services",
     dropdown: [
-      { label: "Web Design", href: "/web-design" },
+      { label: "Design Web", href: "/web-design" },
       { label: "E-commerce", href: "/ecommerce" },
-      { label: "AI Automation", href: "/ai-automation" },
+      { label: "Automatisation IA", href: "/ai-automation" },
     ],
   },
   { label: "Portfolio", href: "/#portfolio" },
-  { label: "Blog", href: "/#blog" },
+  { label: "Légal", href: "/legal" },
 ];
 
 export function Navbar({ onGetStarted }: { onGetStarted: () => void }) {
@@ -37,7 +37,7 @@ export function Navbar({ onGetStarted }: { onGetStarted: () => void }) {
       <div className="container mx-auto flex items-center justify-between h-16 px-4 lg:px-8">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5">
-          <img src={delmarLogo} alt="Delmar Web Studios" className="h-7 w-7 rounded-lg object-contain" />
+          <img src={delmarLogo} alt="Delmar Web Studios" className="h-12 w-12 rounded-xl object-contain" />
           <span className="font-bold text-lg tracking-tight">Delmar Web Studios</span>
         </Link>
 
@@ -94,7 +94,7 @@ export function Navbar({ onGetStarted }: { onGetStarted: () => void }) {
             onClick={onGetStarted}
             className="hidden md:inline-flex items-center px-5 py-2.5 bg-primary text-primary-foreground text-sm font-semibold rounded-lg btn-glow transition-all hover:scale-[1.02]"
           >
-            Get Started
+            Commencer
           </button>
           <button
             className="md:hidden p-2"
@@ -145,7 +145,7 @@ export function Navbar({ onGetStarted }: { onGetStarted: () => void }) {
                 onClick={() => { onGetStarted(); setMobileOpen(false); }}
                 className="w-full mt-2 px-5 py-2.5 bg-primary text-primary-foreground text-sm font-semibold rounded-lg"
               >
-                Get Started
+                Commencer
               </button>
             </div>
           </motion.div>
