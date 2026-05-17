@@ -38,7 +38,7 @@ export default function WebDesign() {
                 Renforcez votre autorité de marque avec un design web rapide, responsive et haut de gamme.
               </p>
               <button onClick={() => setModalOpen(true)} className="px-8 py-4 bg-foreground text-background text-base font-semibold rounded-xl btn-glow hover:scale-[1.03] transition-all duration-200">
-                Démarrer votre projet →
+                Réserver un diagnostic stratégique →
               </button>
             </motion.div>
 

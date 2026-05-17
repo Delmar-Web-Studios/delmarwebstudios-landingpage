@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ArrowRight, ArrowLeft, Zap, Users, ShoppingCart, Send, Check } from "lucide-react";
+import { X, ArrowRight, ArrowLeft, Layout, Bot, ShoppingCart, Send, Check } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Calendar } from "@/components/ui/calendar";
@@ -11,9 +11,9 @@ interface OnboardingModalProps {
 }
 
 const goals = [
-  { label: "Obtenir plus de leads", icon: Zap },
-  { label: "Automatiser le support", icon: Users },
-  { label: "Développer mon e-commerce", icon: ShoppingCart },
+  { label: "Présence Web Sur-Mesure", icon: Layout },
+  { label: "Agents IA & Automatisation (WhatsApp/IG/FB)", icon: Bot },
+  { label: "E-commerce & Mobile Money", icon: ShoppingCart },
 ];
 
 const timeSlots = [
@@ -106,10 +106,10 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.25 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-background rounded-2xl shadow-premium w-full max-w-lg overflow-hidden"
+            className="bg-background rounded-2xl shadow-premium w-full max-w-lg overflow-hidden flex flex-col max-h-[92vh]"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-border">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-border shrink-0">
               <div>
                 <p className="text-xs font-medium text-muted-foreground">Étape {step} sur {totalSteps}</p>
                 <div className="flex gap-1 mt-2">
@@ -124,7 +124,7 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
             </div>
 
             {/* Body */}
-            <div className="px-6 py-6 min-h-[280px]">
+            <div className="px-6 py-6 overflow-y-auto flex-1 min-h-0">
               <AnimatePresence mode="wait">
                 <motion.div key={step} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.2 }}>
                   {step === 1 && (
@@ -248,7 +248,7 @@ export function OnboardingModal({ open, onClose }: OnboardingModalProps) {
             </div>
 
             {/* Footer */}
-            <div className="flex items-center justify-between px-6 py-4 border-t border-border">
+            <div className="flex items-center justify-between px-6 py-4 border-t border-border shrink-0 bg-background">
               <button onClick={prev} disabled={step === 1} className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground disabled:opacity-30 transition-colors">
                 <ArrowLeft className="h-4 w-4" /> Retour
               </button>

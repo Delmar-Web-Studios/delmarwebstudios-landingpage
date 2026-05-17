@@ -37,7 +37,7 @@ export default function AiAutomation() {
                 Déployez des chatbots intelligents sur WhatsApp, Facebook et Instagram pour gérer vos leads 24/7.
               </p>
               <button onClick={() => setModalOpen(true)} className="px-8 py-4 bg-foreground text-background text-base font-semibold rounded-xl btn-glow hover:scale-[1.03] transition-all duration-200">
-                Automatiser maintenant →
+                Réserver un diagnostic stratégique →
               </button>
             </motion.div>
 
