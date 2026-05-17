@@ -2,11 +2,13 @@ import { motion } from "framer-motion";
 import logoEcole from "@/assets/logo-ecole-canadienne.png";
 import logoMaison from "@/assets/logo-maison-blanche.png";
 import logoSauvons from "@/assets/logo-sauvonstonexam.png";
+import logoJecam from "@/assets/logo-jecam.png";
 
 const clients = [
-  { name: "Ecole Canadienne Internationale", logo: logoEcole },
+  { name: "École Canadienne Inter-Nations", logo: logoEcole },
   { name: "La Maison Blanche Afanayo", logo: logoMaison },
   { name: "SauvonsTonExam", logo: logoSauvons },
+  { name: "Junior Entreprise Cameroun (JECAM)", logo: logoJecam },
 ];
 
 export function PortfolioSection() {
@@ -18,14 +20,14 @@ export function PortfolioSection() {
             Portfolio
           </p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-            La confiance des marques <span className="text-gradient-blue">ambitieuses</span>
+            Vous êtes entre de <span className="text-gradient-blue">bonnes mains</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            Nous avons accompagné des entreprises à travers l'Afrique pour bâtir leur autorité digitale.
+            Bâtir une grande entreprise demande du courage, et vous méritez un partenaire qui prend soin de votre vision. Ces marques ambitieuses à travers l'Afrique nous ont confié les clés de leur présence digitale.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
           {clients.map((client, i) => (
             <motion.div
               key={client.name}

@@ -61,12 +61,11 @@ export default function Payment() {
     try {
       const { error } = await supabase.from("payments").insert({
         business_name: form.businessName,
-        website_url: form.websiteUrl || null,
-        whatsapp: form.whatsapp,
+        phone: form.whatsapp,
         email: form.email,
-        payment_method: form.paymentMethod,
-        amount_xaf: parseInt(form.amount.replace(/\D/g, ""), 10),
-        payment_number: form.paymentNumber,
+        method: form.paymentMethod,
+        amount_fcfa: parseInt(form.amount.replace(/\D/g, ""), 10),
+        notes: `Website: ${form.websiteUrl || "N/A"} | Payment number: ${form.paymentNumber}`,
         status: "pending",
       });
       if (error) throw error;

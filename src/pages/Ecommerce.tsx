@@ -38,7 +38,7 @@ export default function Ecommerce() {
                 Boutiques en ligne évolutives conçues pour un parcours d'achat fluide et un fort taux de conversion.
               </p>
               <button onClick={() => setModalOpen(true)} className="px-8 py-4 bg-foreground text-background text-base font-semibold rounded-xl btn-glow hover:scale-[1.03] transition-all duration-200">
-                Lancer ma boutique →
+                Réserver un diagnostic stratégique →
               </button>
             </motion.div>
 
