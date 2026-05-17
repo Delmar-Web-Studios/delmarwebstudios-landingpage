@@ -12,7 +12,7 @@ export function HeroSection({ onCta }: { onCta: () => void }) {
           transition={{ duration: 0.5 }}
           className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-electric mb-6 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10"
         >
-          Conçu pour la nouvelle génération de géants africains
+          Delmar Web Studios — Premium African Digital Agency
         </motion.p>
 
         {/* Headline */}
@@ -22,8 +22,7 @@ export function HeroSection({ onCta }: { onCta: () => void }) {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-6"
         >
-          Votre <span className="text-gradient-blue">Vision</span> mérite une présence digitale aussi{" "}
-          <span className="text-gradient-blue">audacieuse</span> que votre ambition
+          Conçu pour la nouvelle génération de <span className="text-gradient-blue">leaders économiques</span> africains.
         </motion.h1>
 
         {/* Subheadline */}
@@ -31,27 +30,39 @@ export function HeroSection({ onCta }: { onCta: () => void }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
+          className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Arrêtez de perdre des clients à cause de systèmes dépassés. Nous créons des sites premium
-          et des agents IA qui transforment votre travail en moteur de revenus 24/7.
+          Votre vision mérite une présence digitale aussi <strong className="text-foreground font-semibold">audacieuse</strong> que votre ambition. Arrêtez de perdre du temps et des clients à cause de processus manuels. Nous créons des sites web premium sur-mesure et des agents IA intelligents qui transforment votre business en un moteur de revenus autonome. Gagnez la liberté que vous méritez pendant que votre technologie travaille pour vous, 24h/24 et 7j/7.
         </motion.p>
 
-        {/* CTA */}
+        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col items-center gap-3 mb-16"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-4"
         >
           <button
             onClick={onCta}
-            className="px-8 py-4 bg-foreground text-background text-base font-semibold rounded-xl btn-glow hover:scale-[1.03] transition-all duration-200"
+            className="px-7 py-3.5 bg-foreground text-background text-base font-semibold rounded-xl btn-glow hover:scale-[1.03] transition-all duration-200"
           >
-            Revendiquez votre autorité →
+            Propulser ma présence digitale →
           </button>
-          <span className="text-sm text-muted-foreground">Aucune carte bancaire requise</span>
+          <button
+            onClick={onCta}
+            className="px-7 py-3.5 bg-background text-foreground text-base font-semibold rounded-xl border border-border hover:border-primary/40 hover:bg-primary/5 transition-all duration-200"
+          >
+            Réserver un diagnostic stratégique (Offert)
+          </button>
         </motion.div>
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="block text-sm text-muted-foreground mb-16"
+        >
+          Aucune carte bancaire requise
+        </motion.span>
       </div>
 
       {/* Showcase Image */}

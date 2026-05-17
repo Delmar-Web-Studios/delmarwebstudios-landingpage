@@ -14,7 +14,90 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          budget: string | null
+          business_name: string | null
+          created_at: string
+          email: string | null
+          goal: string | null
+          id: string
+          industry: string | null
+          meet_date: string | null
+          meet_time: string | null
+          name: string
+          website_url: string | null
+          whatsapp: string | null
+        }
+        Insert: {
+          budget?: string | null
+          business_name?: string | null
+          created_at?: string
+          email?: string | null
+          goal?: string | null
+          id?: string
+          industry?: string | null
+          meet_date?: string | null
+          meet_time?: string | null
+          name: string
+          website_url?: string | null
+          whatsapp?: string | null
+        }
+        Update: {
+          budget?: string | null
+          business_name?: string | null
+          created_at?: string
+          email?: string | null
+          goal?: string | null
+          id?: string
+          industry?: string | null
+          meet_date?: string | null
+          meet_time?: string | null
+          name?: string
+          website_url?: string | null
+          whatsapp?: string | null
+        }
+        Relationships: []
+      }
+      payments: {
+        Row: {
+          amount_fcfa: number
+          business_name: string | null
+          contact_name: string | null
+          created_at: string
+          email: string | null
+          id: string
+          method: string
+          notes: string | null
+          phone: string | null
+          status: string
+        }
+        Insert: {
+          amount_fcfa: number
+          business_name?: string | null
+          contact_name?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          method: string
+          notes?: string | null
+          phone?: string | null
+          status?: string
+        }
+        Update: {
+          amount_fcfa?: number
+          business_name?: string | null
+          contact_name?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          method?: string
+          notes?: string | null
+          phone?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
