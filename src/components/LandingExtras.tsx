@@ -7,7 +7,7 @@ export function PromiseSection() {
   return (
     <section className="py-20 lg:py-28 bg-background">
       <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
-        <p className="text-sm font-semibold tracking-[0.15em] uppercase text-electric mb-3">
+        <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-electric mb-3">
           La Promesse
         </p>
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
@@ -157,7 +157,7 @@ export function FaqSection() {
     <section className="py-20 lg:py-28 bg-background">
       <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
         <div className="text-center mb-12">
-          <p className="text-sm font-semibold tracking-[0.15em] uppercase text-electric mb-3">
+          <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-electric mb-3">
             FAQ
           </p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">

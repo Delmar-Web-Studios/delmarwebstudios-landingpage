@@ -16,7 +16,7 @@ export function PortfolioSection() {
     <section id="portfolio" className="py-20 lg:py-28 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-sm font-semibold tracking-[0.15em] uppercase text-electric mb-3">
+          <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-electric mb-3">
             Portfolio
           </p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
