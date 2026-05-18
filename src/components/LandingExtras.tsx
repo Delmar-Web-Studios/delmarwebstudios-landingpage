@@ -69,7 +69,7 @@ export function UrgencySection({ onCta }: { onCta: () => void }) {
     <section className="py-20 lg:py-28 bg-background">
       <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
         <div className="text-center mb-10">
-          <p className="text-sm font-semibold tracking-[0.15em] uppercase text-electric mb-3">
+          <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-electric mb-3">
             Le coût de l'inaction
           </p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
@@ -79,6 +79,23 @@ export function UrgencySection({ onCta }: { onCta: () => void }) {
             Chaque minute passée à répondre manuellement aux mêmes messages, chaque prospect qui
             quitte un site lent pour un concurrent — c'est de l'argent et de l'énergie qui s'évaporent.
           </p>
+        </div>
+
+        {/* Compact stat row */}
+        <div className="grid grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto">
+          {[
+            { stat: "-40%", label: "Temps perdu" },
+            { stat: "-25%", label: "Leads évaporés" },
+            { stat: "-15%", label: "Image de marque" },
+          ].map((s) => (
+            <div
+              key={s.label}
+              className="bg-background border border-[hsl(var(--border))] rounded-xl p-5 text-center"
+            >
+              <div className="text-2xl md:text-3xl font-bold text-electric mb-1">{s.stat}</div>
+              <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">{s.label}</p>
+            </div>
+          ))}
         </div>
 
         <div className="grid md:grid-cols-3 gap-5 mb-10">
