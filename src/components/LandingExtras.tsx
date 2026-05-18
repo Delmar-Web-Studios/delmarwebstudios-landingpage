@@ -5,9 +5,9 @@ import { ChevronDown, Quote, Clock, TrendingDown, AlertTriangle } from "lucide-r
 /* ──────────────────────────────── PROMESSE ──────────────────────────────── */
 export function PromiseSection() {
   return (
-    <section className="py-20 lg:py-28 bg-background">
+    <section className="py-16 lg:py-24 bg-background">
       <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
-        <p className="text-sm font-semibold tracking-[0.15em] uppercase text-electric mb-3">
+        <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-electric mb-3">
           La Promesse
         </p>
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
@@ -29,40 +29,31 @@ export function PromiseSection() {
 /* ────────────────────────────── TÉMOIGNAGES ────────────────────────────── */
 export function TestimonialsSection() {
   return (
-    <section className="py-20 lg:py-28 bg-background">
-      <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-        <div className="text-center mb-12">
-          <p className="text-sm font-semibold tracking-[0.15em] uppercase text-electric mb-3">
-            Témoignages
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-            Ce qu'ils <span className="text-gradient-blue">disent</span> de nous
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            La plus belle récompense reste la liberté et la croissance de ceux qui nous font confiance.
-          </p>
-        </div>
-
+    <section className="py-20 lg:py-24 bg-background">
+      <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="bg-background rounded-2xl border border-[hsl(var(--border))] p-8 md:p-10 shadow-card"
+          className="bg-background rounded-2xl border border-[hsl(var(--border))] shadow-card p-10 md:p-12 text-center"
         >
-          <Quote className="h-8 w-8 text-electric mb-4" />
-          <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6">
-            « L'intégration de notre agent IA sur nos canaux de messagerie a libéré notre équipe
-            de plus de <strong>15 heures de gestion répétitive par semaine</strong>. Les clients
-            reçoivent une réponse instantanée, même à 23h. Un investissement rentabilisé en un
-            temps record. »
+          <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-electric mb-6">
+            Témoignages
           </p>
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-electric font-bold text-sm">
+          <Quote className="h-8 w-8 text-electric/30 mx-auto mb-5" />
+          <p className="text-xl md:text-2xl font-medium leading-relaxed italic mb-8 text-foreground">
+            « L'intégration de notre agent IA sur nos canaux de messagerie a libéré notre équipe
+            de plus de <strong className="not-italic">15 heures de gestion répétitive par semaine</strong>.
+            Les clients reçoivent une réponse instantanée, même à 23h. Un investissement rentabilisé
+            en un temps record. »
+          </p>
+          <div className="flex items-center justify-center gap-3">
+            <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-electric font-bold text-sm">
               ET
             </div>
-            <div>
-              <p className="font-semibold text-sm">Enguene Tryphene</p>
+            <div className="text-left">
+              <p className="font-bold text-sm">Enguene Tryphene</p>
               <p className="text-xs text-muted-foreground">Fondateur, SauvonsTonExam</p>
             </div>
           </div>
@@ -75,10 +66,10 @@ export function TestimonialsSection() {
 /* ────────────────────────── COÛT DE L'INACTION ────────────────────────── */
 export function UrgencySection({ onCta }: { onCta: () => void }) {
   return (
-    <section className="py-20 lg:py-28 bg-background">
+    <section className="py-16 lg:py-24 bg-background">
       <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
         <div className="text-center mb-10">
-          <p className="text-sm font-semibold tracking-[0.15em] uppercase text-electric mb-3">
+          <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-electric mb-3">
             Le coût de l'inaction
           </p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
@@ -88,6 +79,23 @@ export function UrgencySection({ onCta }: { onCta: () => void }) {
             Chaque minute passée à répondre manuellement aux mêmes messages, chaque prospect qui
             quitte un site lent pour un concurrent — c'est de l'argent et de l'énergie qui s'évaporent.
           </p>
+        </div>
+
+        {/* Compact stat row */}
+        <div className="grid grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto">
+          {[
+            { stat: "-40%", label: "Temps perdu" },
+            { stat: "-25%", label: "Leads évaporés" },
+            { stat: "-15%", label: "Image de marque" },
+          ].map((s) => (
+            <div
+              key={s.label}
+              className="bg-background border border-[hsl(var(--border))] rounded-xl p-5 text-center"
+            >
+              <div className="text-2xl md:text-3xl font-bold text-electric mb-1">{s.stat}</div>
+              <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">{s.label}</p>
+            </div>
+          ))}
         </div>
 
         <div className="grid md:grid-cols-3 gap-5 mb-10">
@@ -146,10 +154,10 @@ const faqs = [
 export function FaqSection() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="py-20 lg:py-28 bg-background">
+    <section className="py-16 lg:py-24 bg-background">
       <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
         <div className="text-center mb-12">
-          <p className="text-sm font-semibold tracking-[0.15em] uppercase text-electric mb-3">
+          <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-electric mb-3">
             FAQ
           </p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">

@@ -10,7 +10,7 @@ export function HeroSection({ onCta }: { onCta: () => void }) {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-electric mb-6 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10"
+          className="inline-block text-[10px] font-bold tracking-[0.2em] uppercase text-electric mb-6"
         >
           Delmar Web Studios — Premium African Digital Agency
         </motion.p>
