@@ -5,7 +5,7 @@ import { ChevronDown, Quote, Clock, TrendingDown, AlertTriangle } from "lucide-r
 /* ──────────────────────────────── PROMESSE ──────────────────────────────── */
 export function PromiseSection() {
   return (
-    <section className="py-20 lg:py-28 bg-background">
+    <section className="py-16 lg:py-24 bg-background">
       <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
         <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-electric mb-3">
           La Promesse
@@ -66,7 +66,7 @@ export function TestimonialsSection() {
 /* ────────────────────────── COÛT DE L'INACTION ────────────────────────── */
 export function UrgencySection({ onCta }: { onCta: () => void }) {
   return (
-    <section className="py-20 lg:py-28 bg-background">
+    <section className="py-16 lg:py-24 bg-background">
       <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
         <div className="text-center mb-10">
           <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-electric mb-3">
@@ -154,7 +154,7 @@ const faqs = [
 export function FaqSection() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="py-20 lg:py-28 bg-background">
+    <section className="py-16 lg:py-24 bg-background">
       <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
         <div className="text-center mb-12">
           <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-electric mb-3">
