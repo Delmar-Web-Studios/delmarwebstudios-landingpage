@@ -29,40 +29,31 @@ export function PromiseSection() {
 /* ────────────────────────────── TÉMOIGNAGES ────────────────────────────── */
 export function TestimonialsSection() {
   return (
-    <section className="py-20 lg:py-28 bg-background">
-      <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-        <div className="text-center mb-12">
-          <p className="text-sm font-semibold tracking-[0.15em] uppercase text-electric mb-3">
-            Témoignages
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-            Ce qu'ils <span className="text-gradient-blue">disent</span> de nous
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            La plus belle récompense reste la liberté et la croissance de ceux qui nous font confiance.
-          </p>
-        </div>
-
+    <section className="py-20 lg:py-24 bg-background">
+      <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="bg-background rounded-2xl border border-[hsl(var(--border))] p-8 md:p-10 shadow-card"
+          className="bg-background rounded-2xl border border-[hsl(var(--border))] shadow-card p-10 md:p-12 text-center"
         >
-          <Quote className="h-8 w-8 text-electric mb-4" />
-          <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6">
-            « L'intégration de notre agent IA sur nos canaux de messagerie a libéré notre équipe
-            de plus de <strong>15 heures de gestion répétitive par semaine</strong>. Les clients
-            reçoivent une réponse instantanée, même à 23h. Un investissement rentabilisé en un
-            temps record. »
+          <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-electric mb-6">
+            Témoignages
           </p>
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-electric font-bold text-sm">
+          <Quote className="h-8 w-8 text-electric/30 mx-auto mb-5" />
+          <p className="text-xl md:text-2xl font-medium leading-relaxed italic mb-8 text-foreground">
+            « L'intégration de notre agent IA sur nos canaux de messagerie a libéré notre équipe
+            de plus de <strong className="not-italic">15 heures de gestion répétitive par semaine</strong>.
+            Les clients reçoivent une réponse instantanée, même à 23h. Un investissement rentabilisé
+            en un temps record. »
+          </p>
+          <div className="flex items-center justify-center gap-3">
+            <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-electric font-bold text-sm">
               ET
             </div>
-            <div>
-              <p className="font-semibold text-sm">Enguene Tryphene</p>
+            <div className="text-left">
+              <p className="font-bold text-sm">Enguene Tryphene</p>
               <p className="text-xs text-muted-foreground">Fondateur, SauvonsTonExam</p>
             </div>
           </div>
