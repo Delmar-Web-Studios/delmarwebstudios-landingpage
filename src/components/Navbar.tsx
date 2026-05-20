@@ -31,18 +31,18 @@ export function Navbar({ onGetStarted }: { onGetStarted: () => void }) {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/90 backdrop-blur-xl shadow-card" : "bg-transparent"
+        scrolled ? "bg-white/90 backdrop-blur-xl border-b border-border/60" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between h-16 px-4 lg:px-8">
+      <div className="container mx-auto flex items-center justify-between h-20 px-4 lg:px-8">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5">
-          <img src={delmarLogo} alt="Delmar Web Studios" className="h-12 w-12 rounded-xl object-contain" />
-          <span className="font-bold text-lg tracking-tight">Delmar Web Studios</span>
+        <Link to="/" className="flex items-center gap-3">
+          <img src={delmarLogo} alt="Delmar Web Studios" className="h-12 w-12 lg:h-14 lg:w-14 object-contain" />
+          <span className="font-bold text-lg lg:text-xl tracking-tight">Delmar Web Studios</span>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {navItems.map((item) =>
             item.dropdown ? (
               <div
@@ -51,7 +51,7 @@ export function Navbar({ onGetStarted }: { onGetStarted: () => void }) {
                 onMouseEnter={() => setDropdownOpen(true)}
                 onMouseLeave={() => setDropdownOpen(false)}
               >
-                <button className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                <button className="flex items-center gap-1 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors">
                   {item.label}
                   <ChevronDown className="h-3.5 w-3.5" />
                 </button>
@@ -61,7 +61,7 @@ export function Navbar({ onGetStarted }: { onGetStarted: () => void }) {
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 8 }}
-                      className="absolute top-full left-0 mt-2 w-48 bg-background rounded-lg shadow-premium border border-border p-2"
+                      className="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-premium border border-border p-2"
                     >
                       {item.dropdown.map((sub) => (
                         <Link
@@ -80,7 +80,7 @@ export function Navbar({ onGetStarted }: { onGetStarted: () => void }) {
               <Link
                 key={item.label}
                 to={item.href!}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
               >
                 {item.label}
               </Link>
@@ -88,31 +88,26 @@ export function Navbar({ onGetStarted }: { onGetStarted: () => void }) {
           )}
         </div>
 
-        {/* CTA + Mobile Toggle */}
         <div className="flex items-center gap-3">
           <button
             onClick={onGetStarted}
-            className="hidden md:inline-flex items-center px-5 py-2.5 bg-primary text-primary-foreground text-sm font-semibold rounded-lg btn-glow transition-all hover:scale-[1.02]"
+            className="hidden md:inline-flex items-center px-5 py-2.5 bg-foreground text-background text-sm font-semibold rounded-full hover:scale-[1.02] transition-all"
           >
             Commencer
           </button>
-          <button
-            className="md:hidden p-2"
-            onClick={() => setMobileOpen(!mobileOpen)}
-          >
+          <button className="md:hidden p-2" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="md:hidden bg-background border-t border-border overflow-hidden"
+            className="md:hidden bg-white border-t border-border overflow-hidden"
           >
             <div className="px-4 py-4 space-y-3">
               {navItems.map((item) =>
@@ -143,7 +138,7 @@ export function Navbar({ onGetStarted }: { onGetStarted: () => void }) {
               )}
               <button
                 onClick={() => { onGetStarted(); setMobileOpen(false); }}
-                className="w-full mt-2 px-5 py-2.5 bg-primary text-primary-foreground text-sm font-semibold rounded-lg"
+                className="w-full mt-2 px-5 py-3 bg-foreground text-background text-sm font-semibold rounded-full"
               >
                 Commencer
               </button>
