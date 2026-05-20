@@ -46,7 +46,8 @@ const App = () => (
             <Route path="/legal" element={<Navigate to="/legal/conditions-utilisation" replace />} />
 
             {/* Admin */}
-            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/login/admin" element={<AdminLogin />} />
+            <Route path="/admin/login" element={<Navigate to="/login/admin" replace />} />
             <Route
               path="/admin"
               element={

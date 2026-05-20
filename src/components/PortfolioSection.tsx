@@ -13,21 +13,21 @@ const clients = [
 
 export function PortfolioSection() {
   return (
-    <section id="portfolio" className="py-16 lg:py-24 bg-background">
+    <section id="portfolio" className="py-24 lg:py-32 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-electric mb-3">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <p className="text-[11px] font-semibold tracking-[0.2em] uppercase text-electric mb-5">
             Portfolio
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-            Vous êtes entre de <span className="text-gradient-blue">bonnes mains</span>
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.1] mb-6 text-foreground">
+            Vous êtes entre de <span className="text-electric">bonnes mains</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
-            Bâtir une grande entreprise demande du courage, et vous méritez un partenaire qui prend soin de votre vision. Ces marques ambitieuses à travers l'Afrique nous ont confié les clés de leur présence digitale.
+          <p className="text-muted-foreground text-lg leading-[1.75]">
+            Ces marques ambitieuses à travers l'Afrique nous ont confié les clés de leur présence digitale.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
           {clients.map((client, i) => (
             <motion.div
               key={client.name}
@@ -35,12 +35,12 @@ export function PortfolioSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="bg-background rounded-xl p-6 border border-[hsl(var(--border))] flex flex-col items-center justify-center hover:shadow-premium transition-shadow duration-300"
+              className="bg-white rounded-2xl p-8 border border-border/70 flex flex-col items-center justify-center hover:border-electric/30 hover:shadow-premium transition-all duration-300"
             >
               <img
                 src={client.logo}
                 alt={client.name}
-                className="h-20 w-auto object-contain mb-4"
+                className="h-20 w-auto object-contain mb-5"
                 loading="lazy"
               />
               <p className="text-sm font-medium text-center text-muted-foreground">{client.name}</p>

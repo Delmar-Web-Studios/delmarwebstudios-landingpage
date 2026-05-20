@@ -47,17 +47,17 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-16 lg:py-24 bg-background">
+    <section id="services" className="py-24 lg:py-32 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-electric mb-3">
+        <div className="text-center max-w-2xl mx-auto mb-20">
+          <p className="text-[11px] font-semibold tracking-[0.2em] uppercase text-electric mb-5">
             Nos Services
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-            Tout ce qu'il vous faut pour <span className="text-gradient-blue">dominer</span> en ligne
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.1] mb-6 text-foreground">
+            Tout ce qu'il vous faut pour <span className="text-electric">dominer</span> en ligne
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-lg leading-[1.75]">
             Des sites web époustouflants à l'IA conversationnelle — nous gérons la tech pour que vous puissiez vous concentrer sur la croissance.
           </p>
         </div>
@@ -74,7 +74,7 @@ export function ServicesSection() {
             >
               <Link
                 to={service.href}
-                className="group block bg-background rounded-2xl border border-[hsl(var(--border))] p-6 hover:shadow-premium transition-all duration-300 h-full"
+                className="group block bg-white rounded-2xl border border-border/70 p-7 hover:shadow-premium hover:border-electric/30 transition-all duration-300 h-full"
               >
                 {/* Screenshot */}
                 <div className="rounded-xl overflow-hidden mb-5 border border-[hsl(var(--border))]">
