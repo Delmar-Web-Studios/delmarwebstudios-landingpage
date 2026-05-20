@@ -50,7 +50,7 @@ const Users = () => {
         </div>
         <div className="text-xs text-muted-foreground">
           <UserPlus className="h-3 w-3 inline mr-1" />
-          Les nouveaux comptes s'inscrivent via /admin/login
+          Les nouveaux comptes s'inscrivent via /login/admin
         </div>
       </div>
 

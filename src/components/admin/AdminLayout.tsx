@@ -45,7 +45,7 @@ const AppSidebar = () => {
 
   const handleSignOut = async () => {
     await signOut();
-    navigate("/admin/login");
+    navigate("/login/admin");
   };
 
   return (
