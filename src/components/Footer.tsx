@@ -12,8 +12,8 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-4">
-              <img src={delmarLogo} alt="Delmar Web Studios" className="h-12 w-12 rounded-xl object-contain" />
-              <span className="font-bold text-lg">Delmar Web Studios</span>
+              <img src={delmarLogo} alt="Delmar Web Studios" className="h-14 w-14 object-contain" />
+              <span className="font-bold text-xl">Delmar Web Studios</span>
             </Link>
             <p className="text-sm text-muted-foreground max-w-sm leading-relaxed mb-4">
               Sites web premium et agents IA pour les ambitieuses entreprises d'Afrique.
