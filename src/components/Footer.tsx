@@ -12,7 +12,7 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-4">
-              <img src={delmarLogo} alt="Delmar Web Studios" className="h-14 w-14 object-contain" />
+              <img src={delmarLogo} alt="Delmar Web Studios" className="h-20 w-20 object-contain" />
               <span className="font-bold text-xl">Delmar Web Studios</span>
             </Link>
             <p className="text-sm text-muted-foreground max-w-sm leading-relaxed mb-4">

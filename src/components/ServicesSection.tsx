@@ -1,108 +1,38 @@
 import { motion } from "framer-motion";
-import { Layout, ShoppingCart, Bot, ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import logoEcole from "@/assets/logo-ecole-canadienne.png";
-import logoMaison from "@/assets/logo-maison-blanche.png";
-import logoSauvons from "@/assets/logo-sauvonstonexam.png";
-import screenshotEcole from "@/assets/screenshot-ecole.png";
-import screenshotMaison from "@/assets/screenshot-maison-blanche.png";
-import screenshotSauvons from "@/assets/screenshot-sauvonstonexam.png";
-import screenshotChatbot from "@/assets/screenshot-chatbot.png";
 
 const services = [
-  {
-    icon: Layout,
-    title: "Design Web",
-    headline: "Landing pages haute performance pour institutions modernes",
-    description: "Renforcez votre autorité de marque avec un design web rapide, responsive et haut de gamme.",
-    logo: logoEcole,
-    screenshot: screenshotEcole,
-    clientName: "Ecole Canadienne Internationale",
-    href: "/web-design",
-    cta: "En savoir plus",
-  },
-  {
-    icon: ShoppingCart,
-    title: "E-commerce",
-    headline: "Transformez votre stock en source de revenus mondiale",
-    description: "Boutiques en ligne évolutives conçues pour un parcours d'achat fluide et un fort taux de conversion.",
-    logo: logoSauvons,
-    screenshot: screenshotSauvons,
-    clientName: "SauvonsTonExam",
-    href: "/ecommerce",
-    cta: "En savoir plus",
-  },
-  {
-    icon: Bot,
-    title: "Automatisation IA",
-    headline: "Automatisez vos échanges avec des agents IA intelligents",
-    description: "Déployez des chatbots intelligents sur WhatsApp, Facebook et Instagram pour gérer vos leads 24/7.",
-    logo: null,
-    screenshot: screenshotChatbot,
-    clientName: "Interface IA Conversationnelle",
-    href: "/ai-automation",
-    cta: "En savoir plus",
-  },
+  { title: "Design Web", tag: "Sites premium", href: "/web-design" },
+  { title: "E-commerce", tag: "Boutiques qui convertissent", href: "/ecommerce" },
+  { title: "Automatisation IA", tag: "Agents 24/7", href: "/ai-automation" },
 ];
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-24 lg:py-32 bg-white">
-      <div className="container mx-auto px-4 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-20">
-          <p className="text-[11px] font-semibold tracking-[0.2em] uppercase text-electric mb-5">
-            Nos Services
-          </p>
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.1] mb-6 text-foreground">
-            Tout ce qu'il vous faut pour <span className="text-electric">dominer</span> en ligne
-          </h2>
-          <p className="text-muted-foreground text-lg leading-[1.75]">
-            Des sites web époustouflants à l'IA conversationnelle — nous gérons la tech pour que vous puissiez vous concentrer sur la croissance.
-          </p>
-        </div>
-
-        {/* Service Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {services.map((service, i) => (
+    <section id="services" className="py-28 lg:py-36 bg-white">
+      <div className="container mx-auto px-6 max-w-5xl">
+        <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.05] text-foreground text-center mb-16">
+          Nos services.
+        </h2>
+        <div className="grid md:grid-cols-3 gap-3">
+          {services.map((s, i) => (
             <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 20 }}
+              key={s.title}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
+              transition={{ delay: i * 0.08, duration: 0.4 }}
             >
               <Link
-                to={service.href}
-                className="group block bg-white rounded-2xl border border-border/70 p-7 hover:shadow-premium hover:border-electric/30 transition-all duration-300 h-full"
+                to={s.href}
+                className="group block rounded-3xl p-10 bg-white hover:bg-secondary/40 transition-colors h-full"
               >
-                {/* Screenshot */}
-                <div className="rounded-xl overflow-hidden mb-5 border border-[hsl(var(--border))]">
-                  <img
-                    src={service.screenshot}
-                    alt={service.clientName}
-                    className="w-full h-48 object-cover object-top"
-                  />
+                <div className="flex items-start justify-between mb-12">
+                  <span className="text-[11px] uppercase tracking-[0.18em] text-electric font-semibold">{s.tag}</span>
+                  <ArrowUpRight className="h-5 w-5 text-foreground/40 group-hover:text-electric group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
                 </div>
-
-                {/* Logo + Client */}
-                {service.logo && (
-                  <div className="flex items-center gap-3 mb-4">
-                    <img src={service.logo} alt={service.clientName} className="h-8 w-8 rounded-lg object-contain" />
-                    <span className="text-xs text-muted-foreground font-medium">{service.clientName}</span>
-                  </div>
-                )}
-
-                {/* Content */}
-                <div className="flex items-center gap-2 mb-2">
-                  <service.icon className="h-4 w-4 text-electric" />
-                  <span className="text-xs font-semibold uppercase tracking-wider text-electric">{service.title}</span>
-                </div>
-                <h3 className="text-lg font-bold mb-2 group-hover:text-electric transition-colors">{service.headline}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{service.description}</p>
-                <span className="inline-flex items-center gap-1 text-sm font-semibold text-electric">
-                  En savoir plus <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
-                </span>
+                <h3 className="text-2xl md:text-3xl font-bold tracking-tight">{s.title}</h3>
               </Link>
             </motion.div>
           ))}
