@@ -37,7 +37,7 @@ export function Navbar({ onGetStarted }: { onGetStarted: () => void }) {
       <div className="container mx-auto flex items-center justify-between h-20 px-4 lg:px-8">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3">
-          <img src={delmarLogo} alt="Delmar Web Studios" className="h-12 w-12 lg:h-14 lg:w-14 object-contain" />
+          <img src={delmarLogo} alt="Delmar Web Studios" className="h-16 w-16 lg:h-20 lg:w-20 object-contain" />
           <span className="font-bold text-lg lg:text-xl tracking-tight">Delmar Web Studios</span>
         </Link>
 
