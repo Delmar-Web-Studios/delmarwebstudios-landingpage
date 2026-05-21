@@ -19,11 +19,6 @@ import ProtectedRoute from "@/components/admin/ProtectedRoute";
 import AdminLayout from "@/components/admin/AdminLayout";
 import AdminLogin from "./pages/admin/Login";
 import AdminOverview from "./pages/admin/Overview";
-import AdminAgents from "./pages/admin/Agents";
-import AdminScheduled from "./pages/admin/Scheduled";
-import AdminVault from "./pages/admin/Vault";
-import AdminUsers from "./pages/admin/Users";
-import AdminProfile from "./pages/admin/Profile";
 
 const queryClient = new QueryClient();
 
@@ -57,25 +52,6 @@ const App = () => (
               }
             >
               <Route index element={<AdminOverview />} />
-              <Route path="agents" element={<AdminAgents />} />
-              <Route path="scheduled" element={<AdminScheduled />} />
-              <Route path="profile" element={<AdminProfile />} />
-              <Route
-                path="users"
-                element={
-                  <ProtectedRoute requireRole="super_admin">
-                    <AdminUsers />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="vault"
-                element={
-                  <ProtectedRoute requireRole="super_admin">
-                    <AdminVault />
-                  </ProtectedRoute>
-                }
-              />
             </Route>
 
             <Route path="*" element={<NotFound />} />
