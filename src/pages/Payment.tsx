@@ -5,7 +5,6 @@ import confetti from "canvas-confetti";
 import { supabase } from "@/integrations/supabase/client";
 import { Navbar } from "@/components/Navbar";
 import { OnboardingModal } from "@/components/OnboardingModal";
-import { BlueBubbles } from "@/components/BlueBubbles";
 import orangeMoney from "@/assets/orange-money.png";
 import mtnMomo from "@/assets/mtn-momo.png";
 
@@ -94,7 +93,6 @@ export default function Payment() {
   if (success) {
     return (
       <div className="min-h-screen bg-background relative flex items-center justify-center">
-        <BlueBubbles />
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -113,7 +111,6 @@ export default function Payment() {
 
   return (
     <div className="min-h-screen bg-background relative">
-      <BlueBubbles />
       <Navbar onGetStarted={() => setModalOpen(true)} />
 
       <section className="pt-28 pb-16 lg:pt-36 lg:pb-24">
