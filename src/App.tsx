@@ -5,9 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import Index from "./pages/Index";
-import WebDesign from "./pages/WebDesign";
-import Ecommerce from "./pages/Ecommerce";
-import AiAutomation from "./pages/AiAutomation";
+import Portfolio from "./pages/Portfolio";
+import SolutionPage from "./pages/SolutionPage";
 import Payment from "./pages/Payment";
 import ConditionsUtilisation from "./pages/legal/ConditionsUtilisation";
 import PolitiqueConfidentialite from "./pages/legal/PolitiqueConfidentialite";
@@ -31,9 +30,14 @@ const App = () => (
         <AuthProvider>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/web-design" element={<WebDesign />} />
-            <Route path="/ecommerce" element={<Ecommerce />} />
-            <Route path="/ai-automation" element={<AiAutomation />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/solutions/:slug" element={<SolutionPage />} />
+
+            {/* Anciens liens redirigés */}
+            <Route path="/web-design" element={<Navigate to="/solutions/landing-page" replace />} />
+            <Route path="/ecommerce" element={<Navigate to="/solutions/whatsapp-ia" replace />} />
+            <Route path="/ai-automation" element={<Navigate to="/solutions/vocal-ia" replace />} />
+
             <Route path="/delmarstudiosweb-payment-client" element={<Payment />} />
             <Route path="/legal/conditions-utilisation" element={<ConditionsUtilisation />} />
             <Route path="/legal/politique-confidentialite" element={<PolitiqueConfidentialite />} />

@@ -1,60 +1,57 @@
 import { Link } from "react-router-dom";
-import { Mail } from "lucide-react";
-import delmarLogo from "@/assets/delmar-logo.png";
+import { Mail, MessageCircle, MapPin } from "lucide-react";
+import delmarLogo from "@/assets/delmar-logo.png.asset.json";
 
-const CONTACT_EMAIL = "info@delmarwebstudios.qzz.io";
+const EMAIL = "info@delmarwebstudios.qzz.io";
+const WHATSAPP = "+237655671935";
 
 export function Footer() {
   return (
-    <footer className="relative z-10 py-14 border-t border-border bg-background/80 backdrop-blur-sm">
+    <footer className="relative z-10 py-16 border-t border-border bg-white">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-10 mb-10">
+        <div className="grid md:grid-cols-3 gap-10 mb-12">
           {/* Brand */}
-          <div className="md:col-span-2">
-            <Link to="/" className="flex items-center gap-3 mb-4">
-              <img src={delmarLogo} alt="Delmar Web Studios" className="h-20 w-20 object-contain" />
-              <span className="font-bold text-xl">Delmar Web Studios</span>
+          <div>
+            <Link to="/" className="flex items-center gap-2.5 mb-4">
+              <img src={delmarLogo.url} alt="Delmar Web Studios" className="h-10 w-auto object-contain" />
+              <span className="font-bold text-lg tracking-tight">
+                Delmar Web <span className="text-electric">Studios</span>
+              </span>
             </Link>
-            <p className="text-sm text-muted-foreground max-w-sm leading-relaxed mb-4">
-              Sites web premium et agents IA pour les ambitieuses entreprises d'Afrique.
+            <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
+              Nous rendons les entreprises africaines <span className="text-foreground font-semibold">indépendantes</span>
+              {" "}financièrement et techniquement grâce à des systèmes qui travaillent seuls.
             </p>
-            <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="inline-flex items-center gap-2 text-sm text-electric font-medium hover:underline"
-            >
-              <Mail className="h-4 w-4" />
-              {CONTACT_EMAIL}
-            </a>
           </div>
 
-          {/* Services */}
+          {/* Liens rapides */}
           <div>
-            <h4 className="text-sm font-semibold mb-3">Services</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link to="/web-design" className="hover:text-foreground transition-colors">Design Web</Link></li>
-              <li><Link to="/ecommerce" className="hover:text-foreground transition-colors">E-commerce</Link></li>
-              <li><Link to="/ai-automation" className="hover:text-foreground transition-colors">Automatisation IA</Link></li>
+            <h4 className="text-sm font-semibold mb-4 text-foreground">Liens rapides</h4>
+            <ul className="space-y-2.5 text-sm text-muted-foreground">
+              <li><Link to="/" className="hover:text-electric transition-colors">Accueil</Link></li>
+              <li><Link to="/solutions/landing-page" className="hover:text-electric transition-colors">Nos Solutions</Link></li>
+              <li><Link to="/portfolio" className="hover:text-electric transition-colors">Nos Réussites</Link></li>
+              <li><Link to="/#contact" className="hover:text-electric transition-colors">Audit gratuit</Link></li>
             </ul>
           </div>
 
-          {/* Légal */}
+          {/* Contact */}
           <div>
-            <h4 className="text-sm font-semibold mb-3">Légal</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <h4 className="text-sm font-semibold mb-4 text-foreground">Contact direct</h4>
+            <ul className="space-y-3 text-sm">
               <li>
-                <Link to="/legal/conditions-utilisation" className="hover:text-foreground transition-colors">
-                  Conditions d'utilisation
-                </Link>
+                <a href={`https://wa.me/${WHATSAPP.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer"
+                   className="inline-flex items-center gap-2 text-muted-foreground hover:text-electric transition-colors">
+                  <MessageCircle className="h-4 w-4 text-electric" /> {WHATSAPP}
+                </a>
               </li>
               <li>
-                <Link to="/legal/politique-confidentialite" className="hover:text-foreground transition-colors">
-                  Politique de confidentialité
-                </Link>
+                <a href={`mailto:${EMAIL}`} className="inline-flex items-center gap-2 text-muted-foreground hover:text-electric transition-colors">
+                  <Mail className="h-4 w-4 text-electric" /> {EMAIL}
+                </a>
               </li>
-              <li>
-                <Link to="/legal/suppression-donnees" className="hover:text-foreground transition-colors">
-                  Suppression de données
-                </Link>
+              <li className="inline-flex items-center gap-2 text-muted-foreground">
+                <MapPin className="h-4 w-4 text-electric" /> Yaoundé · Cameroun
               </li>
             </ul>
           </div>
@@ -64,9 +61,11 @@ export function Footer() {
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} Delmar Web Studios. Tous droits réservés.
           </p>
-          <p className="text-xs text-muted-foreground">
-            Conçu avec passion en Afrique.
-          </p>
+          <div className="flex items-center gap-5 text-xs text-muted-foreground">
+            <Link to="/legal/conditions-utilisation" className="hover:text-electric transition-colors">Conditions</Link>
+            <Link to="/legal/politique-confidentialite" className="hover:text-electric transition-colors">Confidentialité</Link>
+            <Link to="/legal/suppression-donnees" className="hover:text-electric transition-colors">Suppression données</Link>
+          </div>
         </div>
       </div>
     </footer>

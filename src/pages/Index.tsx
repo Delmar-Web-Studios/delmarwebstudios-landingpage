@@ -1,28 +1,31 @@
 import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
-import { ServicesSection } from "@/components/ServicesSection";
-import { PortfolioSection } from "@/components/PortfolioSection";
-import { OnboardingModal } from "@/components/OnboardingModal";
+import { LogosMarquee } from "@/components/LogosMarquee";
+import { PainSection } from "@/components/PainSection";
+import { SolutionsGrid } from "@/components/SolutionsGrid";
+import { TestimonialFeature } from "@/components/TestimonialFeature";
+import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
-import { BlueBubbles } from "@/components/BlueBubbles";
-import { PromiseSection, TestimonialsSection, UrgencySection, FaqSection } from "@/components/LandingExtras";
+import { OnboardingModal } from "@/components/OnboardingModal";
 
 const Index = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const open = () => setModalOpen(true);
+  const open = () => {
+    const el = document.getElementById("contact");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+    else setModalOpen(true);
+  };
 
   return (
-    <div className="min-h-screen bg-background relative">
-      <BlueBubbles />
+    <div className="min-h-screen bg-white relative">
       <Navbar onGetStarted={open} />
       <HeroSection onCta={open} />
-      <PromiseSection />
-      <PortfolioSection />
-      <TestimonialsSection />
-      <ServicesSection />
-      <UrgencySection onCta={open} />
-      <FaqSection />
+      <LogosMarquee />
+      <PainSection />
+      <SolutionsGrid />
+      <TestimonialFeature />
+      <ContactSection />
       <Footer />
       <OnboardingModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </div>
