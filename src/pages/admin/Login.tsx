@@ -7,7 +7,8 @@ import { Card } from "@/components/ui/card";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
-import delmarLogo from "@/assets/delmar-logo.png";
+import delmarLogoAsset from "@/assets/delmar-logo.png.asset.json";
+const delmarLogo = delmarLogoAsset.url;
 
 const Login = () => {
   const navigate = useNavigate();

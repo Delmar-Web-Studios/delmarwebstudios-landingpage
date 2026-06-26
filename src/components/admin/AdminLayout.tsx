@@ -16,7 +16,8 @@ import { toast } from "sonner";
 import {
   Settings, LogOut, Eye, EyeOff, Copy, Plus, Trash2, Edit, Loader2, KeyRound, Webhook, Users as UsersIcon, Bot, ShieldAlert,
 } from "lucide-react";
-import delmarLogo from "@/assets/delmar-logo.png";
+import delmarLogoAsset from "@/assets/delmar-logo.png.asset.json";
+const delmarLogo = delmarLogoAsset.url;
 
 type Category = "admin" | "inbox" | "marketing" | "sales" | "delivery";
 
