@@ -19,7 +19,7 @@ export function HeroSection({ onCta }: { onCta: () => void }) {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-electric/10 text-electric text-xs font-semibold mb-6"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-electric animate-pulse" />
-            Agence d'automatisation · Yaoundé
+            Systèmes IA pour entrepreneurs ambitieux
           </motion.div>
 
           <motion.h1
