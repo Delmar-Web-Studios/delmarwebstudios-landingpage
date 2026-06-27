@@ -42,6 +42,7 @@ const data: Record<string, SolutionData> = {
   "whatsapp-ia": {
     short: "Agent IA WhatsApp & Chatbot Omnicanal",
     title: "Vendez, qualifiez et répondez 24h/24 sans toucher à votre téléphone.",
+    illustration: "/img/sol-whatsapp-1.jpg",
     pain: {
       title: "Le constat qui fait mal",
       text: "Vous passez vos soirées et vos week-ends à répondre aux mêmes questions sur WhatsApp. Un client mal géré le soir, c'est une vente perdue le lendemain.",
