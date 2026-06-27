@@ -10,6 +10,7 @@ import { OnboardingModal } from "@/components/OnboardingModal";
 type SolutionData = {
   short: string;
   title: string;
+  illustration: string;
   pain: { title: string; text: string };
   install: { title: string; bullets: string[] };
   benefits: string[];
