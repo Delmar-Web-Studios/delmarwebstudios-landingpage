@@ -13,38 +13,28 @@ const clients = [
 ];
 
 export function LogosMarquee() {
-  const loop = [...clients, ...clients];
   return (
-    <section className="py-16 lg:py-20 bg-white border-y border-border/60">
+    <section className="py-16 lg:py-20 bg-white">
       <div className="container mx-auto px-6 mb-10 text-center">
         <p className="text-sm md:text-base text-foreground/70 font-medium">
           Ils nous font confiance pour <span className="text-foreground font-semibold">automatiser leur croissance</span> et gagner du temps :
         </p>
       </div>
 
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-        <div className="flex gap-16 animate-[marquee_30s_linear_infinite] w-max">
-          {loop.map((c, i) => (
-            <div key={i} className="flex items-center justify-center h-20 shrink-0">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-wrap justify-center items-center gap-x-14 gap-y-8">
+          {clients.map((c) => (
+            <div key={c.name} className="flex items-center justify-center h-24">
               <img
                 src={c.logo}
                 alt={c.name}
-                className="h-16 w-auto max-w-[180px] object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all"
+                className="h-20 w-auto max-w-[220px] object-contain"
                 loading="lazy"
               />
             </div>
           ))}
         </div>
       </div>
-
-      <style>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}</style>
     </section>
   );
 }
