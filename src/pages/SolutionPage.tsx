@@ -124,24 +124,35 @@ const SolutionPage = () => {
       <Navbar onGetStarted={open} />
 
       <section className="pt-36 lg:pt-44 pb-20 bg-white">
-        <div className="container mx-auto px-6 max-w-4xl">
-          <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-electric transition-colors mb-8">
-            <ArrowLeft className="h-4 w-4" /> Retour à l'accueil
-          </Link>
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-electric">{sol.short}</span>
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mt-4 text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.05] text-foreground"
-          >
-            {sol.title}
-          </motion.h1>
-          <div className="mt-10 flex flex-col sm:flex-row gap-3">
-            <button onClick={open} className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-electric text-white text-sm font-semibold rounded-full hover:opacity-90 transition-all">
-              Réserver mon audit gratuit <ArrowRight className="h-4 w-4" />
-            </button>
+        <div className="container mx-auto px-6 max-w-6xl grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-electric transition-colors mb-8">
+              <ArrowLeft className="h-4 w-4" /> Retour à l'accueil
+            </Link>
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-electric">{sol.short}</span>
+            <motion.h1
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mt-4 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.1] text-foreground"
+            >
+              {sol.title}
+            </motion.h1>
+            <div className="mt-10 flex flex-col sm:flex-row gap-3">
+              <button onClick={open} className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-electric text-white text-sm font-semibold rounded-full hover:opacity-90 transition-all">
+                Réserver mon audit gratuit <ArrowRight className="h-4 w-4" />
+              </button>
+            </div>
           </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="relative"
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsl(var(--electric-blue)/0.15),transparent_65%)] blur-2xl" />
+            <img src={sol.illustration} alt={sol.short} className="relative w-full h-auto max-h-[480px] object-contain rounded-3xl" />
+          </motion.div>
         </div>
       </section>
 
