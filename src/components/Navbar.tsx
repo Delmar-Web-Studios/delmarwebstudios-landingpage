@@ -26,13 +26,13 @@ export function Navbar({ onGetStarted }: { onGetStarted: () => void }) {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/85 backdrop-blur-xl border-b border-border/50" : "bg-transparent"
+        scrolled ? "bg-white/90 backdrop-blur-xl" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between h-20 px-4 lg:px-8">
-        <Link to="/" className="flex items-center gap-2.5">
-          <img src={delmarLogo.url} alt="Delmar Web Studios" className="h-10 w-auto object-contain" />
-          <span className="font-bold text-base lg:text-lg tracking-tight text-foreground">
+      <div className="container mx-auto flex items-center justify-between h-24 px-4 lg:px-8">
+        <Link to="/" className="flex items-center gap-3">
+          <img src={delmarLogo.url} alt="Delmar Web Studios" className="h-16 lg:h-20 w-auto object-contain" />
+          <span className="font-bold text-lg lg:text-xl tracking-tight text-foreground">
             Delmar Web <span className="text-electric">Studios</span>
           </span>
         </Link>

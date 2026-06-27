@@ -11,11 +11,7 @@ import { OnboardingModal } from "@/components/OnboardingModal";
 
 const Index = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const open = () => {
-    const el = document.getElementById("contact");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-    else setModalOpen(true);
-  };
+  const open = () => setModalOpen(true);
 
   return (
     <div className="min-h-screen bg-white relative">
