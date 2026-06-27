@@ -64,6 +64,7 @@ const data: Record<string, SolutionData> = {
   "vocal-ia": {
     short: "Agent Vocal IA",
     title: "Un secrétariat d'élite qui décroche à votre place — 7j/7, sans jamais rater un appel.",
+    illustration: "/img/sol-vocal.png",
     pain: {
       title: "Le constat qui fait mal",
       text: "Chaque appel manqué, c'est un rendez-vous perdu, un patient parti chez le concurrent, un client qui ne rappellera plus jamais.",
