@@ -20,6 +20,7 @@ const data: Record<string, SolutionData> = {
   "landing-page": {
     short: "Landing Page Express",
     title: "Une page unique qui transforme vos visiteurs en clients payants — en moins d'une semaine.",
+    illustration: "/img/sol-ecom.png",
     pain: {
       title: "Le constat qui fait mal",
       text: "Un site « vitrine » classique coûte cher, met des mois à sortir, et ne ramène jamais un seul vrai client. Pendant ce temps, vos concurrents encaissent.",
