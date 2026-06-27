@@ -86,6 +86,7 @@ const data: Record<string, SolutionData> = {
   "saas-prospection": {
     short: "SaaS Prospection B2B & Chatbots de site",
     title: "Exploitez les logiciels les plus puissants du monde pour remplir votre calendrier de rendez-vous.",
+    illustration: "/img/sol-leads.jpg",
     pain: {
       title: "Le constat qui fait mal",
       text: "Trouver des clients B2B prend trop de temps. Et les abonnements logiciels coûtent une fortune pour rien si personne ne sait les paramétrer correctement.",
