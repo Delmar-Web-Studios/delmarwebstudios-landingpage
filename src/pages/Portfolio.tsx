@@ -102,6 +102,12 @@ const Portfolio = () => {
                   <div>
                     <h3 className="text-2xl font-bold text-foreground">{c.name}</h3>
                     <p className="text-sm text-electric font-medium mt-1">{c.sector}</p>
+                    {c.website && (
+                      <a href={c.website} target="_blank" rel="noopener noreferrer"
+                         className="inline-block mt-2 text-xs font-medium text-foreground/60 hover:text-electric transition-colors break-all">
+                        🔗 {c.website.replace(/^https?:\/\//, "")}
+                      </a>
+                    )}
                   </div>
                   <p className="text-base text-foreground/80 leading-relaxed">{c.win}</p>
                   <div className="pt-4 border-t border-border">
