@@ -72,6 +72,9 @@ export function Navbar({ onGetStarted }: { onGetStarted: () => void }) {
               )}
             </AnimatePresence>
           </div>
+          <Link to="/demos" className="text-sm font-medium text-foreground/75 hover:text-foreground transition-colors">
+            Démos
+          </Link>
           <Link to="/portfolio" className="text-sm font-medium text-foreground/75 hover:text-foreground transition-colors">
             Nos Réussites
           </Link>
@@ -113,6 +116,7 @@ export function Navbar({ onGetStarted }: { onGetStarted: () => void }) {
                   </Link>
                 ))}
               </div>
+              <Link to="/demos" className="block text-sm font-medium" onClick={() => setMobileOpen(false)}>Démos</Link>
               <Link to="/portfolio" className="block text-sm font-medium" onClick={() => setMobileOpen(false)}>Nos Réussites</Link>
               <button
                 onClick={() => { onGetStarted(); setMobileOpen(false); }}

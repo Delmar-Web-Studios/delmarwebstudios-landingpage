@@ -30,6 +30,7 @@ export function Footer() {
             <ul className="space-y-2.5 text-sm text-muted-foreground">
               <li><Link to="/" className="hover:text-electric transition-colors">Accueil</Link></li>
               <li><Link to="/solutions/landing-page" className="hover:text-electric transition-colors">Nos Solutions</Link></li>
+              <li><Link to="/demos" className="hover:text-electric transition-colors">Démos</Link></li>
               <li><Link to="/portfolio" className="hover:text-electric transition-colors">Nos Réussites</Link></li>
               <li><Link to="/#contact" className="hover:text-electric transition-colors">Audit gratuit</Link></li>
             </ul>

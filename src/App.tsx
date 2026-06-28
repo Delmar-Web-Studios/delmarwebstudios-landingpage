@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Portfolio from "./pages/Portfolio";
 import SolutionPage from "./pages/SolutionPage";
 import Payment from "./pages/Payment";
+import Demos from "./pages/Demos";
 import ConditionsUtilisation from "./pages/legal/ConditionsUtilisation";
 import PolitiqueConfidentialite from "./pages/legal/PolitiqueConfidentialite";
 import SuppressionDonnees from "./pages/legal/SuppressionDonnees";
@@ -31,6 +32,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/demos" element={<Demos />} />
             <Route path="/solutions/:slug" element={<SolutionPage />} />
 
             {/* Anciens liens redirigés */}
